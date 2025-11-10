@@ -199,6 +199,45 @@ a:hover{ text-decoration: underline; }
   object-fit:cover;
 }
 
+/* Titolo con logo a sinistra (impaginazione originale) */
+.hero-title{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin:0 0 .85rem;
+}
+.hero-title h1{ margin:0; }
+
+/* Logo quadrato */
+.logo-box{
+  width:78px;
+  height:78px;
+  flex:0 0 78px;
+  border:2.4px solid var(--primary);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg, rgba(184,94,61,.14), rgba(184,94,61,.06));
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.05), 0 2px 6px rgba(0,0,0,.04);
+  overflow:hidden;
+}
+.logo-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:8px;
+}
+@media (max-width:520px){
+  .logo-box{
+    width:64px;
+    height:64px;
+    border-radius:12px;
+  }
+  .logo-box img{ padding:6px; }
+}
+
 /* Badges sotto hero */
 .badges{
   margin:.75rem 0 0;
@@ -252,7 +291,7 @@ a:hover{ text-decoration: underline; }
   flex-wrap:wrap;
 }
 
-/* Prezzo cerchiato terracotta (leggermente più saturo) */
+/* Prezzo cerchiato terracotta */
 .price{
   display:inline-flex;
   align-items:center;
@@ -448,59 +487,5 @@ p{ margin:.5rem 0; }
   .btn{ height:40px; }
   .hero-inner{ grid-template-columns:1fr; }
   .card h3{ gap:.35rem; }
-}
-/* ========== Hero brand (logo quadrato) ========== */
-.hero-brand{
-  display:flex;
-  align-items:center;
-  gap:.85rem;
-  margin:0 0 .9rem;
-}
-
-.logo-box{
-  width:78px;
-  height:78px;
-  flex:0 0 78px;
-  border:2.4px solid var(--primary);
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:600;
-  font-size:.7rem;
-  letter-spacing:.6px;
-  color: var(--primary);
-  background:
-    linear-gradient(135deg, rgba(184,94,61,.12), rgba(184,94,61,.04));
-  box-shadow:
-    inset 0 1px 2px rgba(0,0,0,.05),
-    0 2px 6px rgba(0,0,0,.04);
-  overflow:hidden;
-  position:relative;
-}
-
-/* Se usi un logo immagine */
-.logo-box img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:8px; /* spazio interno, regola se necessario */
-}
-
-/* Variante più piccola su schermi stretti */
-@media (max-width:520px){
-  .logo-box{
-    width:64px;
-    height:64px;
-    border-radius:12px;
-  }
-}
-
-/* (Opzionale) Testo claim accanto al logo */
-.hero-brand .brand-text{
-  font-size:.8rem;
-  font-weight:500;
-  color: var(--muted);
-  max-width:140px;
-  line-height:1.3;
+  .hero-title{ align-items:center; }
 }
