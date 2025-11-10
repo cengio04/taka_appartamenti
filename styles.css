@@ -173,17 +173,27 @@ a:hover{ text-decoration: underline; }
   align-items:center;
   padding-block: clamp(2rem,6vw,3.5rem);
 }
+
+/* NOTA: per ottenere il capo esatto,
+   inserisci un <br> nell'H1 tra le due righe:
+   Appartamenti a <span class="accent">Cisterna d’Asti</span><br>Taká appartamenti */
 .hero-text h1{
-  font-size: clamp(1.8rem,2.6vw + 1rem,2.75rem);
-  line-height:1.15;
-  margin:0 0 .75rem;
+  font-size: clamp(1.9rem, 2.8vw + 1rem, 3rem);
+  line-height: 1.1;
+  margin: 0 0 .75rem;
+  word-break: normal;
 }
+.hero-text h1 br{
+  display: block; /* forza il capo come desideri */
+}
+
 .accent{
   background-image: linear-gradient(90deg,#B85E3D,#A44E30,#8F4026);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
+
 .hero-text p{
   margin:0 0 1.25rem;
   color: var(--muted);
@@ -202,23 +212,23 @@ a:hover{ text-decoration: underline; }
 /* ========== Logo a sinistra del titolo (impaginazione come prima) ========== */
 .hero-title{
   display:flex;
-  align-items:center;     /* allinea verticalmente il logo al titolo */
+  align-items:center;     /* logo allineato al testo */
   gap:1rem;
-  flex-wrap:nowrap;       /* il logo resta a sinistra, il titolo può andare a capo */
+  flex-wrap:nowrap;
   margin:0 0 .85rem;
 }
 .hero-title h1{
-  margin:0;               /* evita spazio extra sopra/sotto */
-  min-width:0;            /* consente il wrap del testo in flex */
+  margin:0;
+  min-width:0;
 }
 
 /* Riquadro logo */
 .logo-box{
-  width:78px;
-  height:78px;
-  flex:0 0 78px;
+  width: 92px;        /* leggermente più grande */
+  height: 92px;
+  flex: 0 0 92px;
   border:2.4px solid var(--primary);
-  border-radius:14px;
+  border-radius:16px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -230,17 +240,17 @@ a:hover{ text-decoration: underline; }
   width:100%;
   height:100%;
   object-fit:contain;
-  padding:8px;
+  padding:10px; /* respiro interno */
 }
 
-/* Mobile molto stretto: logo leggermente ridotto, sempre a sinistra */
+/* Mobile molto stretto: logo ridotto, capo sempre rispettato */
 @media (max-width:520px){
   .logo-box{
-    width:64px;
-    height:64px;
-    border-radius:12px;
+    width:70px;
+    height:70px;
+    border-radius:14px;
   }
-  .logo-box img{ padding:6px; }
+  .logo-box img{ padding:8px; }
 }
 
 /* Badges sotto hero */
