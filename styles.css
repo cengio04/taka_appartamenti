@@ -90,3 +90,31 @@ input:focus, textarea:focus{outline:2px solid #cfe2ff}
   .services{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr}
 }
+/* --- Modifiche richieste per ridurre lo spazio --- */
+
+/* 1. Riduce lo spazio tra i bottoni della Hero (CTA) e l'elemento sottostante */
+.hero .cta {
+    /* Imposta un margine inferiore molto ridotto o nullo.
+       Se non funziona, prova ad aggiungere !important o a modificare il padding-bottom di .hero */
+    margin-bottom: 0;
+}
+
+/* 2. (Opzionale) Se la modifica precedente non è sufficiente, potresti
+   anche ridurre il padding della sezione hero */
+/*
+.hero {
+    padding-bottom: 30px; 
+}
+*/
+
+/* 3. (Per la tua domanda precedente) Riduco i margini dei titoli della sezione caption */
+.caption-cisterna h2 {
+    margin-bottom: 5px; 
+}
+
+.caption-cisterna h3 {
+    margin-bottom: 8px;
+    margin-top: 15px; /* Un po' di spazio sopra */
+}
+
+/* ------------------------------------------------ */
