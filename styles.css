@@ -199,17 +199,20 @@ a:hover{ text-decoration: underline; }
   object-fit:cover;
 }
 
-/* Titolo con logo a sinistra (impaginazione originale) */
+/* ========== Logo a sinistra del titolo (impaginazione come prima) ========== */
 .hero-title{
   display:flex;
-  align-items:flex-start;
+  align-items:center;     /* allinea verticalmente il logo al titolo */
   gap:1rem;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;       /* il logo resta a sinistra, il titolo può andare a capo */
   margin:0 0 .85rem;
 }
-.hero-title h1{ margin:0; }
+.hero-title h1{
+  margin:0;               /* evita spazio extra sopra/sotto */
+  min-width:0;            /* consente il wrap del testo in flex */
+}
 
-/* Logo quadrato */
+/* Riquadro logo */
 .logo-box{
   width:78px;
   height:78px;
@@ -229,6 +232,8 @@ a:hover{ text-decoration: underline; }
   object-fit:contain;
   padding:8px;
 }
+
+/* Mobile molto stretto: logo leggermente ridotto, sempre a sinistra */
 @media (max-width:520px){
   .logo-box{
     width:64px;
@@ -487,5 +492,4 @@ p{ margin:.5rem 0; }
   .btn{ height:40px; }
   .hero-inner{ grid-template-columns:1fr; }
   .card h3{ gap:.35rem; }
-  .hero-title{ align-items:center; }
 }
