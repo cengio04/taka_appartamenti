@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cengio04.github.io/taka_appartamenti/sitemap.xml
