@@ -42,6 +42,10 @@ img{ max-width:100%; height:auto; display:block; }
 a{ color: var(--primary); text-decoration: none; }
 a:hover{ text-decoration: underline; }
 
+/* Helpers */
+.small{ font-size: .925rem; }
+.muted{ color: var(--muted); }
+
 /* ========== Layout helpers ========== */
 .container{
   max-width: var(--maxw);
@@ -136,6 +140,16 @@ a:hover{ text-decoration: underline; }
   background: var(--surface-2);
 }
 
+/* Nuovo: stile per .btn-secondary usato nelle card */
+.btn-secondary{
+  background: #fff;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+}
+.btn-secondary:hover{
+  background: rgba(37,99,235,.06);
+}
+
 /* ========== Skip link ========== */
 .skip-link{
   position: absolute;
@@ -172,6 +186,14 @@ a:hover{ text-decoration: underline; }
   line-height: 1.15;
   margin: 0 0 .75rem;
 }
+/* Titolo con parola evidenziata a colore (come prima) */
+.accent{
+  color: var(--primary);
+  background-image: linear-gradient(90deg, var(--primary), #0ea5e9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .hero-text p{
   margin: 0 0 1.25rem;
   color: var(--muted);
@@ -187,10 +209,29 @@ a:hover{ text-decoration: underline; }
   object-fit: cover;
 }
 
+/* Badge punti di forza sotto all'hero */
+.badges{
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .6rem;
+}
+.badges li{
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: .95rem;
+}
+
 /* ========== Cards & lists ========== */
 .cards{
   display: grid;
   gap: clamp(1rem, 2.5vw, 1.25rem);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* migliore resa su telefono */
 }
 .cards.two-col{
   grid-template-columns: 1fr;
@@ -206,10 +247,42 @@ a:hover{ text-decoration: underline; }
   padding: clamp(1rem, 2.2vw, 1.25rem);
   box-shadow: var(--shadow-1);
 }
+.card img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: .75rem;
+}
+/* Titolo card con prezzo allineato e leggibile anche su mobile */
 .card h3{
   margin: 0 0 .5rem;
   font-size: clamp(1.125rem, .6vw + 1rem, 1.35rem);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
+/* Prezzo cerchiato (come ti piaceva prima) */
+.price{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .15rem .6rem;
+  border: 2px solid var(--primary);
+  border-radius: 999px;
+  color: var(--primary);
+  background: rgba(37,99,235,.06);
+  font-weight: 700;
+  font-size: .92em;
+  line-height: 1;
+  box-shadow:
+    0 0 0 2px #fff inset,
+    0 0 0 2px rgba(37,99,235,.08);
+}
+
 .card p{ margin: 0; }
 .mb-16{ margin-bottom: 1rem; }
 
@@ -228,6 +301,62 @@ a:hover{ text-decoration: underline; }
 .after-cards{
   margin-top: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--muted);
+}
+
+/* ========== Services, gallery, contact quick polish (mobile-friendly) ========== */
+.services{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: .6rem;
+}
+.service{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .45rem .75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.service .ico{ width: 1.1rem; text-align: center; }
+
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: .5rem;
+}
+.gallery img{
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.contact-grid{
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 880px){
+  .contact-grid{ grid-template-columns: 1fr 1fr; }
+}
+.contact-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 .75rem;
+}
+.contact-list li{ margin: .25rem 0; }
+.form input, .form textarea{
+  width: 100%;
+  margin-top: .35rem;
+  padding: .6rem .7rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  outline: none;
+}
+.form input:focus, .form textarea:focus{ box-shadow: 0 0 0 4px var(--ring); }
+.form .checkbox{
+  display: flex; align-items: center; gap: .5rem;
 }
 
 /* ========== FAQ ========== */
@@ -312,4 +441,6 @@ p{ margin: .5rem 0; }
   .hero-inner{
     grid-template-columns: 1fr;
   }
+  /* Spaziatura migliore nelle card su telefono */
+  .card h3{ gap: .35rem; }
 }
