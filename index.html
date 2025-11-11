@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Appartamenti a Cisterna d’Asti <br> Taká appartamenti</title>
+  <title>Appartamenti a Cisterna d’Asti – Taká appartamenti</title>
   <meta name="description" content="Appartamenti turistici a Cisterna d’Asti tra Langhe e Roero: Wi‑Fi, animali ammessi, kit colazione omaggio e parcheggio. Prenotazione diretta WhatsApp.">
   <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Appartamenti a Cisterna d’Asti – Taká appartamenti">
-  <meta property="og:description" content="Soggiorna a Cisterna d’Asti tra Langhe e Roero. Appartamenti curati, animali ammessi, Wi‑Fi, parcheggio, kit colazione. Prenota su WhatsApp.">
+  <meta property="og:description" content="Soggiorna a Cisterna d’Asti: appartamenti curati tra Langhe e Roero. Wi‑Fi, animali ammessi, parcheggio, kit colazione.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cengio04.github.io/taka_appartamenti/">
   <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/foto.jpg">
@@ -15,13 +17,18 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Vista panoramica a Cisterna d’Asti vicino ai Taká appartamenti">
   <meta property="og:locale" content="it_IT">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Appartamenti a Cisterna d’Asti – Taká appartamenti">
-  <meta name="twitter:description" content="Appartamenti curati a Cisterna d’Asti con servizi e accoglienza diretta.">
+  <meta name="twitter:description" content="Soggiorna tra Langhe e Roero in appartamenti confortevoli.">
   <meta name="twitter:image" content="https://cengio04.github.io/taka_appartamenti/images/foto.jpg">
+
   <meta name="theme-color" content="#B85E3D">
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🏠</text></svg>'>
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,55 +65,70 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="Homepage Taká appartamenti">Taká appartamenti</a>
+
       <nav class="nav" aria-label="Principale">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul id="nav-menu" class="nav-menu">
-          <li><a href="#appartamenti">Appartamenti</a></li>
-          <li><a href="#servizi">Servizi</a></li>
-          <li><a href="#galleria">Galleria</a></li>
-          <li><a href="#cosa-vedere">Cisterna d’Asti</a></li>
-          <li><a href="#dove-siamo">Dove siamo</a></li>
-          <li><a href="#contatti">Contatti</a></li>
-          <li><a class="btn btn-primary js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">Prenota ora</a></li>
+        <ul class="nav-menu">
+          <!-- Bottone prenota fisso -->
+          <li>
+            <a class="btn btn-primary js-cta-whatsapp"
+               data-phone="393667273951"
+               href="https://wa.me/393667273951"
+               target="_blank" rel="noopener">Prenota ora</a>
+          </li>
+
+          <!-- Dropdown navigazione (senza scelte appartamenti, solo sezioni) -->
+          <li class="nav-drop">
+            <details>
+              <summary class="nav-drop-toggle" aria-haspopup="true" aria-expanded="false">
+                Menu <span class="chev" aria-hidden="true">▾</span>
+              </summary>
+              <div class="nav-drop-panel" role="menu">
+                <a href="#appartamenti" role="menuitem" class="nav-drop-item">Appartamenti</a>
+                <a href="#servizi" role="menuitem" class="nav-drop-item">Servizi</a>
+                <a href="#galleria" role="menuitem" class="nav-drop-item">Galleria</a>
+                <a href="#cosa-vedere" role="menuitem" class="nav-drop-item">Cisterna d’Asti</a>
+                <a href="#dove-siamo" role="menuitem" class="nav-drop-item">Dove siamo</a>
+                <a href="#contatti" role="menuitem" class="nav-drop-item">Contatti</a>
+              </div>
+            </details>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO (impaginazione originale con logo vicino al titolo) -->
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
           <div class="hero-title">
             <div class="logo-box">
-              <img src="images/logo.jpg" alt="Logo Taká appartamenti" decoding="async">
+              <img src="images/logof.png" alt="Logo Taká appartamenti" decoding="async">
             </div>
-            <h1>Appartamenti a <span class="accent">Cisterna d’Asti</span> – Taká appartamenti</h1>
+            <h1>Appartamenti a <span class="accent">Cisterna d’Asti</span><br>Taká appartamenti</h1>
           </div>
 
           <p>Tra Langhe e Roero: appartamenti curati con accoglienza personale, animali ammessi e kit colazione di benvenuto.</p>
 
-            <div class="cta">
-              <a class="btn btn-primary js-cta-whatsapp"
-                 data-phone="393667273951"
-                 href="https://wa.me/393667273951" target="_blank" rel="noopener">Prenota su WhatsApp</a>
-              <a class="btn btn-outline" href="#contatti">Richiedi disponibilità</a>
-            </div>
+          <div class="cta">
+            <a class="btn btn-primary js-cta-whatsapp"
+               data-phone="393667273951"
+               href="https://wa.me/393667273951" target="_blank" rel="noopener">Prenota su WhatsApp</a>
+            <a class="btn btn-outline" href="#contatti">Richiedi disponibilità</a>
+          </div>
 
-            <ul class="badges" aria-label="Punti di forza">
-              <li>✓ Animali ammessi</li>
-              <li>✓ Kit colazione omaggio</li>
-              <li>✓ Parcheggio garantito</li>
-              <li>✓ Assistenza diretta</li>
-            </ul>
-            <p class="small muted">Prezzi indicativi per notte (variabili per periodo/festività). Contattaci per preventivi aggiornati.</p>
+          <ul class="badges" aria-label="Punti di forza">
+            <li>✓ Animali ammessi</li>
+            <li>✓ Kit colazione omaggio</li>
+            <li>✓ Parcheggio garantito</li>
+            <li>✓ Assistenza diretta</li>
+          </ul>
+          <p class="small muted">Prezzi indicativi per notte (variabili per periodo/festività). Contattaci per preventivi aggiornati.</p>
         </div>
 
         <div class="hero-media">
-          <img src="images/copertina.jpeg" alt="Vista e interni accoglienti dei Taká appartamenti a Cisterna d’Asti">
+          <img src="images/copertina.jpeg" alt="Interno e accoglienza dei Taká appartamenti a Cisterna d’Asti">
         </div>
       </div>
     </section>
@@ -116,10 +138,11 @@
       <div class="container">
         <h2>I nostri appartamenti</h2>
         <div class="cards">
+          <!-- Takápradalù -->
           <article class="card">
             <img src="images/takapradalu.jpeg" alt="Appartamento Takápradalù a Cisterna d’Asti">
             <div class="card-body">
-              <h3>Takápradalù <span class="price">90€/notte</span></h3>
+              <h3>Takápradalù <span class="price">110€/notte</span></h3>
               <ul class="features">
                 <li>👥 Fino a 5 persone • 2 camere da letto</li>
                 <li>🍳 Cucina open space • Bagno privato</li>
@@ -135,11 +158,11 @@
               </div>
             </div>
           </article>
-
+          <!-- Takálcastel -->
           <article class="card">
             <img src="images/takalcastel.jpeg" alt="Appartamento Takálcastel a Cisterna d’Asti">
             <div class="card-body">
-              <h3>Takálcastel <span class="price">85€/notte</span></h3>
+              <h3>Takálcastel <span class="price">90€/notte</span></h3>
               <ul class="features">
                 <li>👥 Fino a 3 persone • 1 camera (2º piano)</li>
                 <li>🍳 Cucina open space • Bagno privato</li>
@@ -156,11 +179,11 @@
               </div>
             </div>
           </article>
-
+          <!-- Takámúsica 1 -->
           <article class="card">
             <img src="images/takamusica1.jpeg" alt="Appartamento Takámúsica 1 a Cisterna d’Asti">
             <div class="card-body">
-              <h3>Takámúsica 1 <span class="price">90€/notte</span></h3>
+              <h3>Takámúsica 1 <span class="price">100€/notte</span></h3>
               <ul class="features">
                 <li>👥 Fino a 4 persone • matrimoniale in sala (divano letto)</li>
                 <li>🍳 Cucina open space • Bagno privato</li>
@@ -176,11 +199,11 @@
               </div>
             </div>
           </article>
-
+          <!-- Takámúsica 2 -->
           <article class="card">
             <img src="images/takamusica2.jpeg" alt="Appartamento Takámúsica 2 a Cisterna d’Asti">
             <div class="card-body">
-              <h3>Takámúsica 2 <span class="price">100€/notte</span></h3>
+              <h3>Takámúsica 2 <span class="price">110€/notte</span></h3>
               <ul class="features">
                 <li>👥 Fino a 5 persone • 2 camere spaziose</li>
                 <li>🍳 Cucina open space • Bagno privato</li>
@@ -200,6 +223,7 @@
       </div>
     </section>
 
+    <!-- SERVIZI -->
     <section id="servizi" class="section alt">
       <div class="container">
         <h2>Servizi</h2>
@@ -216,6 +240,7 @@
       </div>
     </section>
 
+    <!-- GALLERIA -->
     <section id="galleria" class="section">
       <div class="container">
         <h2>Galleria</h2>
@@ -230,6 +255,7 @@
       </div>
     </section>
 
+    <!-- CISERNA D’ASTI -->
     <section id="cosa-vedere" class="section alt">
       <div class="container">
         <h2>Cisterna d’Asti e dintorni</h2>
@@ -238,20 +264,142 @@
       </div>
     </section>
 
+    <!-- DOVE SIAMO (con mappa incorporata a destra) -->
     <section id="dove-siamo" class="section">
-      <div class="container">
-        <h2>Dove siamo</h2>
-        <p><strong>Indirizzo di riferimento:</strong> Piazza Rino Rossino, Cisterna d'Asti 14010 (ci incontriamo qui e vi accompagniamo in struttura)</p>
-        <p><strong>Parcheggio:</strong> privato per Takápradalù; garantito nelle vicinanze per gli altri appartamenti.</p>
-        <p>
-          <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Piazza+Rino+Rossino%2C+Cisterna+d%27Asti+14010">Apri su Google Maps</a>
-        </p>
+      <div class="container location-grid">
+        <div class="location-text">
+          <h2>Dove siamo</h2>
+          <p><strong>Indirizzo di riferimento:</strong> Piazza Rino Rossino, Cisterna d'Asti 14010 (ci incontriamo qui e vi accompagnamo in struttura)</p>
+          <p><strong>Parcheggio:</strong> privato per Takápradalù; garantito nelle vicinanze per gli altri appartamenti.</p>
+          <p class="small muted">Clicca sulla mappa per aprire l'indirizzo su Google Maps e ottenere indicazioni.</p>
+        </div>
+        <div class="location-map">
+          <div class="map-wrapper">
+            <iframe
+              title="Mappa di Piazza Rino Rossino, Cisterna d'Asti"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Piazza+Rino+Rossino,+Cisterna+d'Asti+14010&output=embed">
+            </iframe>
+            <a
+              class="map-overlay"
+              href="https://www.google.com/maps/search/?api=1&query=Piazza+Rino+Rossino%2C+Cisterna+d%27Asti+14010"
+              target="_blank"
+              rel="noopener"
+              aria-label="Apri l'indirizzo su Google Maps">
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- CONTATTI -->
     <section id="contatti" class="section">
       <div class="container">
         <h2>Contatti</h2>
+
+        <!-- Stili mirati solo alla sezione contatti per migliorare il mobile -->
+        <style>
+          /* Layout responsive della griglia contatti */
+          #contatti .contact-grid {
+            display: grid;
+            gap: 16px;
+            align-items: start;
+          }
+          @media (min-width: 900px) {
+            #contatti .contact-grid {
+              grid-template-columns: 1fr 1fr;
+              gap: 24px;
+            }
+          }
+
+          /* Card del form: padding, bordo, ombra morbida */
+          #contatti .card.form {
+            background: #fff;
+            border: 1px solid #e7deda;
+            border-radius: 18px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+            padding: 20px;
+            margin-bottom: max(16px, env(safe-area-inset-bottom));
+          }
+
+          /* Etichette e campi: font >=16px per evitare zoom iOS */
+          #contatti .card.form label {
+            display: grid;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 16px;
+          }
+          #contatti .card.form input[type="text"],
+          #contatti .card.form input[type="email"],
+          #contatti .card.form input[type="tel"],
+          #contatti .card.form textarea {
+            width: 100%;
+            border: 1.5px solid #e7deda;
+            border-radius: 16px;
+            padding: 14px 16px;
+            background: #fff;
+            color: #2a2a2a;
+            outline: none;
+            font-size: 16px; /* evitare zoom su focus in iOS */
+            transition: border-color .15s ease, box-shadow .15s ease;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 48px;
+            box-sizing: border-box;
+          }
+          #contatti .card.form textarea {
+            min-height: 120px;
+            resize: vertical;
+          }
+          #contatti .card.form input::placeholder,
+          #contatti .card.form textarea::placeholder {
+            color: #b6ada9;
+          }
+          #contatti .card.form input:focus,
+          #contatti .card.form textarea:focus {
+            border-color: #bfa9a3;
+            box-shadow: 0 0 0 3px rgba(191,169,163,0.25);
+          }
+
+          /* Checkbox grande e allineata al testo */
+          #contatti .card.form label.checkbox {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            align-items: start;
+            gap: 14px;
+            font-weight: 500;
+          }
+          #contatti .card.form label.checkbox input[type="checkbox"] {
+            width: 28px;
+            height: 28px;
+            margin: 0;
+            accent-color: #B85E3D; /* colore del brand sul check */
+          }
+          #contatti .card.form label.checkbox a {
+            color: #B85E3D;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+          }
+
+          /* Bottone: full width su mobile, target comodo */
+          #contatti .card.form .btn.btn-primary {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 9999px;
+            box-shadow: 0 8px 28px rgba(184,94,61,0.28);
+          }
+          #contatti .card.form .btn.btn-primary:active {
+            transform: translateY(1px);
+          }
+
+          /* Nota finale più leggibile */
+          #contatti .card.form .form-note {
+            margin: 8px 0 0;
+            font-size: 13px;
+            color: #6f6a67;
+          }
+        </style>
+
         <div class="contact-grid">
           <div>
             <ul class="contact-list">
@@ -299,6 +447,11 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const y=document.getElementById('year');
+      if(y) y.textContent=new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
