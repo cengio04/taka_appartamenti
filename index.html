@@ -297,6 +297,109 @@
     <section id="contatti" class="section">
       <div class="container">
         <h2>Contatti</h2>
+
+        <!-- Stili mirati solo alla sezione contatti per migliorare il mobile -->
+        <style>
+          /* Layout responsive della griglia contatti */
+          #contatti .contact-grid {
+            display: grid;
+            gap: 16px;
+            align-items: start;
+          }
+          @media (min-width: 900px) {
+            #contatti .contact-grid {
+              grid-template-columns: 1fr 1fr;
+              gap: 24px;
+            }
+          }
+
+          /* Card del form: padding, bordo, ombra morbida */
+          #contatti .card.form {
+            background: #fff;
+            border: 1px solid #e7deda;
+            border-radius: 18px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+            padding: 20px;
+            margin-bottom: max(16px, env(safe-area-inset-bottom));
+          }
+
+          /* Etichette e campi: font >=16px per evitare zoom iOS */
+          #contatti .card.form label {
+            display: grid;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 16px;
+          }
+          #contatti .card.form input[type="text"],
+          #contatti .card.form input[type="email"],
+          #contatti .card.form input[type="tel"],
+          #contatti .card.form textarea {
+            width: 100%;
+            border: 1.5px solid #e7deda;
+            border-radius: 16px;
+            padding: 14px 16px;
+            background: #fff;
+            color: #2a2a2a;
+            outline: none;
+            font-size: 16px; /* evitare zoom su focus in iOS */
+            transition: border-color .15s ease, box-shadow .15s ease;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 48px;
+            box-sizing: border-box;
+          }
+          #contatti .card.form textarea {
+            min-height: 120px;
+            resize: vertical;
+          }
+          #contatti .card.form input::placeholder,
+          #contatti .card.form textarea::placeholder {
+            color: #b6ada9;
+          }
+          #contatti .card.form input:focus,
+          #contatti .card.form textarea:focus {
+            border-color: #bfa9a3;
+            box-shadow: 0 0 0 3px rgba(191,169,163,0.25);
+          }
+
+          /* Checkbox grande e allineata al testo */
+          #contatti .card.form label.checkbox {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            align-items: start;
+            gap: 14px;
+            font-weight: 500;
+          }
+          #contatti .card.form label.checkbox input[type="checkbox"] {
+            width: 28px;
+            height: 28px;
+            margin: 0;
+            accent-color: #B85E3D; /* colore del brand sul check */
+          }
+          #contatti .card.form label.checkbox a {
+            color: #B85E3D;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+          }
+
+          /* Bottone: full width su mobile, target comodo */
+          #contatti .card.form .btn.btn-primary {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 9999px;
+            box-shadow: 0 8px 28px rgba(184,94,61,0.28);
+          }
+          #contatti .card.form .btn.btn-primary:active {
+            transform: translateY(1px);
+          }
+
+          /* Nota finale più leggibile */
+          #contatti .card.form .form-note {
+            margin: 8px 0 0;
+            font-size: 13px;
+            color: #6f6a67;
+          }
+        </style>
+
         <div class="contact-grid">
           <div>
             <ul class="contact-list">
