@@ -529,3 +529,58 @@ p{ margin:.5rem 0; }
   outline:none;
   box-shadow:0 0 0 4px rgba(200,154,27,.25);
 }
+/* === Aggiunte per pagina Biciclette: BIO + PREZZI === */
+.bio{
+  display:grid;
+  grid-template-columns: 110px 1fr;
+  gap:14px;
+  align-items:start;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding:14px;
+  box-shadow: var(--shadow-1);
+}
+.bio-img{
+  width:110px; height:110px; object-fit:cover;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+@media (max-width:560px){
+  .bio{ grid-template-columns: 84px 1fr; }
+  .bio-img{ width:84px; height:84px; }
+}
+
+.price-box{
+  background: var(--mustard-bg);
+  border:1px solid var(--mustard-border);
+  border-radius: var(--radius);
+  padding: clamp(0.9rem, 1.5vw, 1.2rem);
+  box-shadow: var(--shadow-2);
+}
+.price-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: clamp(.6rem, 2vw, 1rem);
+}
+@media (max-width:720px){
+  .price-grid{ grid-template-columns:1fr; }
+}
+.price-col h3{
+  margin:.1rem 0 .35rem;
+  font-size: clamp(1.05rem, .4vw + 1rem, 1.2rem);
+}
+.price-col p, .price-col ul{ margin:0; }
+.price-col ul{ padding-left:1.1rem; }
+.price-box .tag{
+  display:inline-block;
+  margin-left:.35rem;
+  padding:.06rem .45rem;
+  border-radius:999px;
+  background: color-mix(in srgb, var(--mustard-accent) 18%, #fff 82%);
+  color:#5a4707;
+  border:1px solid color-mix(in srgb, var(--mustard-accent) 40%, #d6c375 60%);
+  font-size:.8rem;
+  vertical-align:baseline;
+}
+.price-box .small{ margin-top:.65rem; display:block; }
