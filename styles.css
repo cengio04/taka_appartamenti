@@ -911,3 +911,12 @@ p{ margin:.5rem 0; }
     }
   }
 }
+/* Giorni passati in grigio (non cliccabili) – solo pagina availability */
+.page-availability .availability .day.past{
+  background: #ece9e6;
+  border-color: #dfd9d2;
+  color: #a39890;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
