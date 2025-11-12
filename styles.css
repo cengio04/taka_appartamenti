@@ -686,3 +686,45 @@ p{ margin:.5rem 0; }
   .kit-item img{ width:72px; height:72px; }
   .kit-info h3{ font-size:1rem; }
 }
+.availability-head{
+  display:flex; flex-wrap:wrap; gap:.8rem 1rem; align-items:end; margin-bottom:1rem;
+}
+.apt-select, .guest-select{ display:flex; flex-direction:column; gap:.35rem; }
+.apt-select select, .guest-select input{
+  height:40px; padding:.4rem .6rem;
+  border:1px solid var(--border); border-radius:10px; background:#fff; color:var(--text);
+}
+.legend{ display:flex; gap:.5rem; margin-left:auto; flex-wrap:wrap; }
+.lg{ display:inline-flex; align-items:center; gap:.35rem; font-size:.9rem; color:var(--muted); }
+.lg::before{ content:""; width:14px; height:14px; border-radius:4px; border:1px solid var(--border); display:inline-block; }
+.lg-free::before{ background:#d1f2d1; border-color:#8bc68b; }
+.lg-busy::before{ background:#f7d6d6; border-color:#e4b2b2; }
+.lg-sel::before{ background:#c9e7ff; border-color:#84b3de; }
+
+.calendar-wrap{ display:grid; gap:1rem; }
+.month-block h2{ margin:.25rem 0; font-size:1.1rem; color:var(--muted); }
+.month-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:.35rem; }
+.day{
+  background:#fff; border:1px solid var(--border); border-radius:10px;
+  min-height:42px; padding:.45rem; font-weight:600; color:var(--text);
+  box-shadow: var(--shadow-1);
+}
+.day:hover{ transform:translateY(-1px); box-shadow: var(--shadow-2); cursor:pointer; }
+.day.busy{ background:#f7d6d6; border-color:#e4b2b2; color:#8a5a5a; cursor:not-allowed; box-shadow:none; transform:none; }
+.day.sel-start, .day.sel-range{ background:#d1f2d1; border-color:#8bc68b; color:#175c17; }
+.day.empty{ visibility:hidden; }
+
+.selection-box{
+  margin-top:1rem;
+  background: var(--mustard-bg);
+  border:1px solid var(--mustard-border);
+  border-radius: var(--radius);
+  padding: clamp(.8rem, 2vw, 1rem);
+  box-shadow: var(--shadow-2);
+}
+.selection-box .btn{ margin-top:.35rem; }
+
+@media (max-width:720px){
+  .availability-head{ align-items:stretch; }
+  .legend{ width:100%; margin-left:0; }
+}
