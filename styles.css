@@ -595,8 +595,8 @@ p{ margin:.5rem 0; }
   object-fit:cover;
 
   /* Aggiunta: maschera per la dissolvenza laterale */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%);
-          mask-image: linear-gradient(to right, transparent 0%, #000 12%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 18%, #000 100%);
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
 }
