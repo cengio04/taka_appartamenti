@@ -257,7 +257,30 @@ a:hover{ text-decoration:underline; }
   border:1px solid var(--border);
   font-size:.95rem;
 }
-
+/* Variante hero senza riquadro logo */
+.hero-title--clean{
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+}
+.hero-logo{
+  width:140px;
+  height:140px;
+  object-fit:contain;
+  display:block;
+  border-radius:20px; /* opzionale */
+}
+@media (max-width:640px){
+  .hero-logo{
+    width:118px;
+    height:118px;
+  }
+  .hero-title--clean h1{
+    font-size:clamp(2.05rem, 7vw + .6rem, 2.65rem);
+    line-height:1.12;
+    margin:0;
+  }
+}
 /* ========== Cards & lists ========== */
 .cards{
   display:grid;
