@@ -282,33 +282,6 @@
     }
     return true;
 
-  // calcolo di oggi a mezzanotte UTC (deve stare fuori da renderMonth, definito una volta)
-  const TODAY_ISO = (() => {
-    const now = new Date();
-    const utcMid = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-    return utcMid.toISOString().slice(0,10);
-  })();
-
-  // ... dentro renderMonth() quando crei ogni bottone giorno:
-  const iso = day.toISOString().slice(0,10);
-  const btn = document.createElement("button");
-  btn.type = "button";
-  btn.className = "day";
-  btn.dataset.date = iso;
-  btn.textContent = day.getUTCDate();
-
-  const isPast = iso < TODAY_ISO; // giorni strettamente precedenti a oggi
-  if (isPast) {
-    btn.classList.add("past");
-    btn.disabled = true;
-  } else if (occupiedSet.has(iso)) {
-    btn.classList.add("busy");
-    btn.disabled = true;
-  } else {
-    btn.addEventListener("click", ()=> onDayClick(iso));
-  }
-
-
   function renderSelectionInfo(){
     if(selectedStart && selectedEnd){
       const n = diffNights(selectedStart, selectedEnd);
