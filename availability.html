@@ -8,9 +8,7 @@
   <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/availability.html">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- Cambia SOLO l'apertura del body aggiungendo la classe page-availability -->
-  <body class="page-availability">
+<body class="page-availability">
   <a class="skip-link" href="#main">Salta al contenuto</a>
 
   <header class="site-header">
@@ -22,14 +20,13 @@
           <li><a href="index.html#servizi">Servizi</a></li>
           <li><a href="index.html#dove-siamo">Dove siamo</a></li>
           <li><a href="index.html#contatti">Contatti</a></li>
-          <li><a class="btn btn-primary" href="https://wa.me/393667273951" target="_blank" rel="noopener">Prenota ora</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="section">
+    <section class="section availability">
       <div class="container">
         <h1>Disponibilità</h1>
 
@@ -52,7 +49,7 @@
           <div class="legend">
             <span class="lg lg-free">Disponibile</span>
             <span class="lg lg-busy">Occupato</span>
-            <span class="lg lg-sel">Selezionato</span>
+            <span class="lg lg-end">Check‑out</span>
           </div>
         </div>
 
@@ -72,7 +69,7 @@
         <div id="grid" class="month-grid" role="grid" aria-label="Calendario"></div>
 
         <div id="selBox" class="selection-box">
-          <p>Primo click = <strong>check‑in</strong>, secondo click = <strong>check‑out</strong>. Clicca di nuovo il check‑in per deselezionarlo. Fonte calendario: Airbnb sincronizzato (ritardo max ~2 ore).</p>
+          <p>Primo click = <strong>check‑in</strong>, secondo click = <strong>check‑out</strong>. Clicca di nuovo il check‑in per deselezionarlo. I giorni passati sono grigi.</p>
           <div id="selInfo"></div>
           <button id="askBtn" class="btn btn-primary" disabled>Richiedi prenotazione su WhatsApp</button>
           <p class="small muted" id="updNote"></p>
@@ -81,9 +78,8 @@
     </section>
   </main>
 
-  <!-- Sostituisci SOLO il contenuto del tuo <script> con questo blocco -->
-<script>
-  // Inserisci qui il tuo Worker
+  <script>
+  // URL del tuo Worker
   const WORKER_BASE = "https://taka-ics.lorenzodibilio04.workers.dev";
 
   // Appartamenti: nome, max ospiti, telefono WhatsApp
@@ -117,7 +113,7 @@
   let updatedAt     = null;      // timestamp feed
   let viewMonth     = firstOfMonthUTC(new Date()); // mese mostrato
 
-  // OGGI (mezzanotte UTC) in ISO YYYY-MM-DD -> coerenza con calendario generato in UTC
+  // Oggi (mezzanotte UTC) per marcare giorni passati
   const TODAY_ISO = (() => {
     const now = new Date();
     const utcMid = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
@@ -173,7 +169,7 @@
   }
 
   function renderMonth(){
-    // Selezioni nel passato non sono valide (es.: pagina lasciata aperta oltre mezzanotte)
+    // Invalida selezioni nel passato
     if (selectedStart && selectedStart < TODAY_ISO) { selectedStart = null; selectedEnd = null; }
     if (selectedEnd && selectedEnd < TODAY_ISO) { selectedEnd = null; }
 
@@ -200,7 +196,7 @@
       btn.dataset.date = iso;
       btn.textContent = day.getUTCDate();
 
-      const isPast = iso < TODAY_ISO; // NUOVO: giorni passati
+      const isPast = iso < TODAY_ISO;
       if (isPast) {
         btn.classList.add("past");
         btn.disabled = true;
@@ -211,12 +207,15 @@
         btn.addEventListener("click", ()=> onDayClick(iso));
       }
 
-      // evidenzia selezione se ricade nel mese mostrato
+      // evidenziazione selezione
       if(selectedStart === iso){ btn.classList.add("sel-start"); }
       if(selectedStart && selectedEnd){
         const d = new Date(iso);
         if(d > new Date(selectedStart) && d < new Date(selectedEnd)){
-          btn.classList.add("sel-range");
+          btn.classList.add("sel-range");      // giorni interni (verde)
+        }
+        if(iso === selectedEnd){
+          btn.classList.add("sel-end");        // check-out (azzurro)
         }
       }
 
@@ -315,4 +314,6 @@
 
   // Avvio
   loadAvailability();
-</script>
+  </script>
+</body>
+</html>
