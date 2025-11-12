@@ -812,3 +812,54 @@ p{ margin:.5rem 0; }
 .page-availability .site-header .header-inner{
   justify-content:flex-start;
 }
+/* ===== Spaziatura compatta per la pagina disponibilità ===== */
+
+/* Riduce l'altezza dell'header SOLO sulla pagina availability */
+.page-availability .site-header{
+  padding-block: 6px;            /* prima probabilmente 20–32px */
+  border-bottom:1px solid var(--border);
+  background: var(--bg, #f7f2ee);
+}
+.page-availability .site-header .header-inner{
+  min-height: 50px;               /* evita header troppo alto su mobile */
+  padding: 0 20px;
+}
+
+/* Riduce il padding-top della sezione principale */
+.page-availability .section.availability{
+  padding-top: 14px;              /* se .section di base usa 48/60px, lo sovrascrive */
+}
+
+/* Compatta il titolo */
+.page-availability .section.availability h1{
+  margin: 4px 0 18px;             /* prima poteva avere ~32px top */
+  line-height: 1.15;
+  font-size: clamp(1.55rem, 5.2vw, 2.05rem);
+}
+
+/* Allinea il blocco dei controlli un po' più vicino al titolo */
+.page-availability .availability-head{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Se vuoi ancora meno spazio tra legenda e calendario */
+.page-availability .legend{
+  margin-top: 2px;
+}
+
+/* Riduce leggermente il gap verticale tra intestazione giorni e griglia */
+.page-availability .weekdays{
+  margin-bottom: .15rem;
+}
+
+/* Regola globale per compensare eventuali padding generici su .section */
+.page-availability main .section:first-of-type{
+  padding-top: 14px;
+}
+
+/* Mobile very small (iPhone SE) ulteriore compressione */
+@media (max-width:360px){
+  .page-availability .site-header .header-inner{ min-height:46px; }
+  .page-availability .section.availability h1{ font-size:1.45rem; margin:2px 0 14px; }
+}
