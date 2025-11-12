@@ -911,27 +911,3 @@ p{ margin:.5rem 0; }
     }
   }
 }
-/* === Availability: ultra compatto === */
-.page-availability .site-header{
-  padding-block: 0 !important;
-  border-bottom: 0;
-}
-.page-availability .site-header .header-inner{
-  min-height: 34px;
-  padding: 0 10px;
-}
-.page-availability .section.availability{
-  padding-top: 2px !important;
-}
-.page-availability .section.availability h1{
-  margin: 0 0 6px !important;
-  font-size: 1.5rem;
-  line-height:1.05;
-}
-
-/* Evita che la status bar iOS copra il contenuto (safe-area) */
-@supports (padding: max(0px)){
-  .page-availability .site-header{
-    padding-top: max(0px, env(safe-area-inset-top));
-  }
-}
