@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Disponibilità appartamenti – Taká appartamenti</title>
-  <meta name="description" content="Verifica disponibilità reale degli appartamenti Taká a Cisterna d’Asti e invia richiesta su WhatsApp.">
+  <meta name="description" content="Verifica disponibilità reale e invia una richiesta su WhatsApp. Seleziona check‑in e check‑out mese per mese.">
   <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/availability.html">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -54,29 +54,36 @@
           </div>
         </div>
 
-        <div id="calendar" class="calendar-wrap"></div>
+        <!-- Navigazione mese -->
+        <div class="cal-nav">
+          <button id="prevMonth" class="nav-btn" aria-label="Mese precedente">‹</button>
+          <div id="monthLabel" class="month-label" aria-live="polite"></div>
+          <button id="nextMonth" class="nav-btn" aria-label="Mese successivo">›</button>
+        </div>
+
+        <!-- Intestazione giorni settimana -->
+        <div class="weekdays" aria-hidden="true">
+          <div>Lu</div><div>Ma</div><div>Me</div><div>Gi</div><div>Ve</div><div>Sa</div><div>Do</div>
+        </div>
+
+        <!-- Calendario del mese corrente -->
+        <div id="grid" class="month-grid" role="grid" aria-label="Calendario"></div>
 
         <div id="selBox" class="selection-box">
-          <p>Seleziona check‑in e check‑out. Fonte calendario: feed Airbnb sincronizzato (ritardo max ~2 ore).</p>
+          <p>Primo click = <strong>check‑in</strong>, secondo click = <strong>check‑out</strong>. Fonte calendario: Airbnb sincronizzato (ritardo max ~2 ore).</p>
           <div id="selInfo"></div>
           <button id="askBtn" class="btn btn-primary" disabled>Richiedi prenotazione su WhatsApp</button>
           <p class="small muted" id="updNote"></p>
         </div>
-
-        <details class="faq small muted" style="margin-top:1rem;">
-          <summary>Come funziona?</summary>
-          <div class="faq-content" style="border:0;padding:0;margin-top:.5rem;">
-            I giorni rossi risultano già prenotati. Inviando la richiesta su WhatsApp riceverai conferma ufficiale dopo la verifica finale.
-          </div>
-        </details>
       </div>
     </section>
   </main>
 
   <script>
-  const WORKER_BASE = "https://taka-ics.lorenzodibilio04.workers.dev"; // <-- METTI QUI IL TUO URL Worker
+  // Sostituisci con l'URL del tuo Worker
+  const WORKER_BASE = "https://taka-ics.lorenzodibilio04.workers.dev";
 
-  // Definizione appartamenti (max + telefono)
+  // Appartamenti: nome, max ospiti, telefono WhatsApp
   const APTS = {
     takamusica1: { name: "Takámúsica 1", max: 4, phone: "393667273951" },
     takamusica2: { name: "Takámúsica 2", max: 5, phone: "393667273951" },
@@ -84,19 +91,41 @@
     takalcastel:{ name: "Takálcastel",  max: 3, phone: "393667273951" }
   };
 
-  const MONTHS_TO_SHOW = 6;
   const $ = s => document.querySelector(s);
-  const calendarEl = $("#calendar");
-  const aptSel     = $("#apt");
-  const guestsInput= $("#guests");
-  const askBtn     = $("#askBtn");
-  const selInfo    = $("#selInfo");
-  const updNote    = $("#updNote");
+  const gridEl      = $("#grid");
+  const aptSel      = $("#apt");
+  const guestsInput = $("#guests");
+  const askBtn      = $("#askBtn");
+  const selInfo     = $("#selInfo");
+  const updNote     = $("#updNote");
+  const monthLabel  = $("#monthLabel");
+  const prevBtn     = $("#prevMonth");
+  const nextBtn     = $("#nextMonth");
 
-  // Pre-selezione da query string
+  // Pre-selezione da query string (?apt=…)
   const url = new URL(location.href);
   const aptParam = url.searchParams.get("apt");
   if (aptParam && APTS[aptParam]) aptSel.value = aptParam;
+
+  // Stato
+  let occupiedSet   = new Set();           // date "YYYY-MM-DD" occupate
+  let selectedStart = null;                // ISO "YYYY-MM-DD"
+  let selectedEnd   = null;                // ISO "YYYY-MM-DD"
+  let updatedAt     = null;                // ISO datetime
+  // Mese visualizzato (UTC, primo giorno del mese)
+  let viewMonth = firstOfMonthUTC(new Date());
+
+  function firstOfMonthUTC(d) {
+    return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1));
+  }
+
+  function addMonthsUTC(d, delta) {
+    return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + delta, 1));
+  }
+
+  function fmtIT(iso){ return new Date(iso).toLocaleDateString("it-IT"); }
+  function diffNights(a,b){ return Math.max( (new Date(b)-new Date(a))/(1000*60*60*24), 0 ); }
+  function isoYMD(d){ return d.toISOString().slice(0,10); }
 
   function syncGuestMax(){
     const a = aptSel.value;
@@ -105,23 +134,22 @@
     if (+guestsInput.value > APTS[a].max) guestsInput.value = APTS[a].max;
   }
   syncGuestMax();
-
-  let occupiedSet   = new Set();
-  let selectedStart = null;
-  let selectedEnd   = null;
-  let updatedAt     = null;
+  guestsInput.addEventListener("change", syncGuestMax);
 
   aptSel.addEventListener("change", ()=>{
     syncGuestMax();
     selectedStart = selectedEnd = null;
-    renderSelection();
-    loadAvailability();
+    viewMonth = firstOfMonthUTC(new Date());  // torna al mese corrente
+    renderMonth();
+    loadAvailability();                        // ricarica occupied dal Worker
+    // aggiorna query string
     const u = new URL(location.href);
     u.searchParams.set("apt", aptSel.value);
     history.replaceState({}, "", u);
   });
 
-  guestsInput.addEventListener("change", syncGuestMax);
+  prevBtn.addEventListener("click", ()=>{ viewMonth = addMonthsUTC(viewMonth, -1); renderMonth(); });
+  nextBtn.addEventListener("click", ()=>{ viewMonth = addMonthsUTC(viewMonth, +1); renderMonth(); });
 
   askBtn.addEventListener("click", ()=>{
     if(!selectedStart || !selectedEnd) return;
@@ -136,108 +164,142 @@
     window.open(wa.toString(), "_blank");
   });
 
-  function fmtIT(iso){ return new Date(iso).toLocaleDateString("it-IT"); }
-  function diffNights(a,b){ return Math.max( (new Date(b)-new Date(a))/(1000*60*60*24), 0 ); }
-
-  function monthDays(y,m){
+  function monthDaysUTC(y,m){
     const out=[]; const d=new Date(Date.UTC(y,m,1));
     while(d.getUTCMonth()===m){ out.push(new Date(d)); d.setUTCDate(d.getUTCDate()+1); }
     return out;
   }
 
-  function renderCalendar(){
-    calendarEl.innerHTML="";
-    const now=new Date();
-    for(let k=0;k<MONTHS_TO_SHOW;k++){
-      const d=new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth()+k, 1));
-      const y=d.getUTCFullYear(), m=d.getUTCMonth();
-      const days=monthDays(y,m);
-      const block=document.createElement("div");
-      block.className="month-block";
-      const title=d.toLocaleDateString("it-IT",{month:"long", year:"numeric"});
-      block.innerHTML=`<h2>${title}</h2><div class="month-grid"></div>`;
-      const grid=block.querySelector(".month-grid");
-      const startW=(new Date(Date.UTC(y,m,1)).getUTCDay()+6)%7;
-      for(let i=0;i<startW;i++){ const e=document.createElement("div"); e.className="day empty"; grid.appendChild(e); }
-      days.forEach(day=>{
-        const iso=day.toISOString().slice(0,10);
-        const btn=document.createElement("button");
-        btn.type="button"; btn.className="day"; btn.dataset.date=iso; btn.textContent=day.getUTCDate();
-        if(occupiedSet.has(iso)){ btn.classList.add("busy"); btn.disabled=true; }
-        else { btn.addEventListener("click", ()=>onDayClick(iso)); }
-        grid.appendChild(btn);
-      });
-      calendarEl.appendChild(block);
+  function renderMonth(){
+    // Etichetta mese
+    monthLabel.textContent = viewMonth.toLocaleDateString("it-IT",{ month:"long", year:"numeric" });
+
+    // Pulisci griglia
+    gridEl.innerHTML = "";
+
+    const y = viewMonth.getUTCFullYear();
+    const m = viewMonth.getUTCMonth();
+    const days = monthDaysUTC(y,m);
+
+    // Pad iniziale (settimana lun-dom)
+    const startW = (new Date(Date.UTC(y,m,1)).getUTCDay()+6)%7; // lun=0
+    for(let i=0;i<startW;i++){
+      const empty = document.createElement("div");
+      empty.className = "day empty";
+      gridEl.appendChild(empty);
     }
-    renderSelection();
+
+    // Giorni del mese
+    days.forEach(day=>{
+      const iso = isoYMD(day);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "day";
+      btn.dataset.date = iso;
+      btn.textContent = day.getUTCDate();
+
+      if(occupiedSet.has(iso)){
+        btn.classList.add("busy");
+        btn.disabled = true;
+      } else {
+        btn.addEventListener("click", ()=> onDayClick(iso));
+      }
+
+      // Evidenziazione selezione (se ricade in questo mese)
+      if(selectedStart === iso){ btn.classList.add("sel-start"); }
+      if(selectedStart && selectedEnd){
+        const d = new Date(iso);
+        if(d > new Date(selectedStart) && d < new Date(selectedEnd)){
+          btn.classList.add("sel-range");
+        }
+      }
+
+      gridEl.appendChild(btn);
+    });
+
+    // Info
+    updNote.textContent = updatedAt ? `Ultimo aggiornamento: ${new Date(updatedAt).toLocaleString("it-IT")}` : "";
+    renderSelectionInfo();
   }
 
   function onDayClick(iso){
-    if(!selectedStart){ selectedStart=iso; selectedEnd=null; }
-    else if(!selectedEnd){
-      if(iso<=selectedStart){ selectedStart=iso; selectedEnd=null; }
-      else{
-        if(!rangeIsFree(selectedStart, iso)){
-          alert("Il range selezionato include giorni occupati.");
-          return;
-        }
-        selectedEnd=iso;
-      }
-    } else {
-      selectedStart=iso; selectedEnd=null;
+    // Primo click: check-in
+    if(!selectedStart){
+      selectedStart = iso;
+      selectedEnd   = null;
+      renderMonth(); // ricalcola classi del mese visibile
+      return;
     }
-    renderSelection();
+    // Secondo click: check-out
+    if(!selectedEnd){
+      // deve essere dopo il check-in
+      if(iso <= selectedStart){
+        // se clicchi uguale o prima, sposto il check-in a questo giorno
+        selectedStart = iso;
+        selectedEnd   = null;
+        renderMonth();
+        return;
+      }
+      // il range non deve attraversare giorni occupati
+      if(!rangeIsFree(selectedStart, iso)){
+        alert("Il periodo selezionato include giorni occupati. Scegli un intervallo diverso.");
+        return;
+      }
+      selectedEnd = iso;
+      renderMonth();
+      return;
+    }
+    // Terzo click: ricomincia una nuova selezione (nuovo check-in)
+    selectedStart = iso;
+    selectedEnd   = null;
+    renderMonth();
   }
 
-  function rangeIsFree(a,b){
-    const d=new Date(a), e=new Date(b);
-    while(d<e){
-      const iso=d.toISOString().slice(0,10);
+  function rangeIsFree(aISO, bISO){
+    const a = new Date(aISO);
+    const b = new Date(bISO);
+    const d = new Date(a);
+    while(d < b){ // end esclusivo (il giorno di check-out è libero)
+      const iso = isoYMD(d);
       if(occupiedSet.has(iso)) return false;
       d.setUTCDate(d.getUTCDate()+1);
     }
     return true;
   }
 
-  function renderSelection(){
-    document.querySelectorAll(".day.sel-start,.day.sel-range").forEach(el=>{
-      el.classList.remove("sel-start","sel-range");
-    });
-    if(selectedStart){
-      const startBtn=document.querySelector(`.day[data-date="${selectedStart}"]`);
-      if(startBtn) startBtn.classList.add("sel-start");
-    }
+  function renderSelectionInfo(){
     if(selectedStart && selectedEnd){
-      const s=new Date(selectedStart), e=new Date(selectedEnd);
-      document.querySelectorAll(".day").forEach(b=>{
-        const d=new Date(b.dataset.date);
-        if(d>s && d<e) b.classList.add("sel-range");
-      });
-      const n=diffNights(selectedStart, selectedEnd);
-      selInfo.innerHTML=`<p><strong>${n} notti</strong> dal ${fmtIT(selectedStart)} al ${fmtIT(selectedEnd)}</p>`;
-      askBtn.disabled=false;
+      const n = diffNights(selectedStart, selectedEnd);
+      selInfo.innerHTML = `<p>Check‑in: <strong>${fmtIT(selectedStart)}</strong> · Check‑out: <strong>${fmtIT(selectedEnd)}</strong> · <strong>${n} notti</strong></p>`;
+      askBtn.disabled = false;
+    } else if(selectedStart){
+      selInfo.innerHTML = `<p>Check‑in: <strong>${fmtIT(selectedStart)}</strong> · Seleziona il check‑out</p>`;
+      askBtn.disabled = true;
     } else {
-      selInfo.innerHTML=""; askBtn.disabled=true;
+      selInfo.innerHTML = "";
+      askBtn.disabled = true;
     }
-    updNote.textContent = updatedAt ? `Ultimo aggiornamento: ${new Date(updatedAt).toLocaleString("it-IT")}` : "";
-    syncGuestMax();
   }
 
   async function loadAvailability(){
-    const apt=aptSel.value;
+    const apt = aptSel.value;
     try{
-      const res=await fetch(`${WORKER_BASE}/availability/${apt}`);
-      const data=await res.json();
-      occupiedSet=new Set(data.occupied||[]);
-      updatedAt=data.updatedAt||null;
+      const res  = await fetch(`${WORKER_BASE}/availability/${apt}`);
+      const data = await res.json();
+      occupiedSet = new Set(data.occupied || []);
+      updatedAt   = data.updatedAt || null;
     }catch(e){
-      occupiedSet=new Set(); updatedAt=null;
+      occupiedSet = new Set();
+      updatedAt   = null;
       alert("Non riesco a caricare la disponibilità. Riprova più tardi.");
     }
-    renderCalendar();
+    renderMonth();
   }
 
+  // Avvio: carica occupato e render mese corrente
   loadAvailability();
+
+  // Se in URL c'era ?apt=, abbiamo già settato il select. Altrimenti resta default.
   </script>
 </body>
 </html>
