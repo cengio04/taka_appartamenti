@@ -863,3 +863,51 @@ p{ margin:.5rem 0; }
   .page-availability .site-header .header-inner{ min-height:46px; }
   .page-availability .section.availability h1{ font-size:1.45rem; margin:2px 0 14px; }
 }
+/* ===== Availability: compattazione extra su mobile ===== */
+
+/* Base (desktop/tablet già compattato) */
+.page-availability .site-header{
+  padding-block: 6px;
+}
+
+/* Mobile: riduci ulteriormente header + spazi prima del titolo */
+@media (max-width: 640px){
+  .page-availability .site-header{
+    padding-block: 2px !important;
+  }
+  .page-availability .site-header .header-inner{
+    min-height: 44px;            /* header più basso su mobile */
+    padding: 0 14px;
+  }
+  .page-availability .section.availability{
+    padding-top: 8px !important; /* meno spazio sopra al titolo */
+  }
+  .page-availability .section.availability h1{
+    margin: 2px 0 12px;          /* compatta il titolo */
+    font-size: 1.5rem;           /* titolo un po' più piccolo */
+    line-height: 1.15;
+  }
+  .page-availability .availability-head{
+    gap: 8px 10px;
+    margin-bottom: 6px;
+  }
+  .page-availability .cal-nav{
+    margin: .35rem 0 .2rem;      /* compatta barra mese */
+  }
+  .page-availability .weekdays{
+    font-size: .85rem;
+    margin-bottom: .15rem;
+  }
+}
+
+/* Schermi molto piccoli: opzione ultra‑compatta (nasconde l’header) */
+@media (max-width: 420px){
+  .page-availability .site-header{ display: none; }
+  .page-availability main .section.availability{ padding-top: 8px !important; }
+  /* Compensa eventuale tacca iPhone */
+  @supports (padding: max(0px)){
+    .page-availability main .section.availability{
+      padding-top: max(8px, env(safe-area-inset-top));
+    }
+  }
+}
