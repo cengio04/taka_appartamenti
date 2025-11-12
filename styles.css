@@ -728,3 +728,42 @@ p{ margin:.5rem 0; }
   .availability-head{ align-items:stretch; }
   .legend{ width:100%; margin-left:0; }
 }
+/* Navigazione mese */
+.cal-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  margin:.6rem 0 .3rem;
+}
+.nav-btn{
+  width:40px; height:40px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff; color:var(--text);
+  font-size:1.2rem; line-height:1;
+  box-shadow: var(--shadow-1);
+}
+.nav-btn:hover{ box-shadow: var(--shadow-2); transform:translateY(-1px); }
+.month-label{
+  min-width: 11ch;
+  text-align:center;
+  font-weight:700;
+  text-transform:capitalize;
+}
+
+/* Intestazione giorni settimana */
+.weekdays{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap:.35rem;
+  color:var(--muted);
+  font-weight:600;
+  font-size:.85rem;
+  margin-bottom:.25rem;
+}
+.weekdays > div{
+  text-align:center;
+}
+
+/* La griglia del mese riusa .month-grid e .day già presenti */
