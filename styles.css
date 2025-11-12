@@ -920,3 +920,24 @@ p{ margin:.5rem 0; }
   box-shadow: none;
   transform: none;
 }
+/* Giorni passati: quadratini grigi ben visibili (solo pagina disponibilità) */
+.page-availability .availability .day.past{
+  background: #E8E6E3;      /* grigio pieno per lo sfondo */
+  border-color: #D6D0C9;    /* bordo grigio chiaro */
+  color: #8E857D;           /* testo grigio medio */
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+.page-availability .availability .day.past:hover{
+  background: #E8E6E3;
+  box-shadow: none;
+}
+
+/* Se vuoi un contrasto ancora più alto, usa questa variante (decommenta e commenta il blocco sopra)
+.page-availability .availability .day.past{
+  background: #DDD9D4;
+  border-color: #CAC2B9;
+  color: #7C736B;
+}
+*/
