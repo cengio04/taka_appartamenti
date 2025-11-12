@@ -81,7 +81,8 @@
     </section>
   </main>
 
-  <script>
+  <!-- Sostituisci SOLO il contenuto del tuo <script> con questo blocco -->
+<script>
   // Inserisci qui il tuo Worker
   const WORKER_BASE = "https://taka-ics.lorenzodibilio04.workers.dev";
 
@@ -115,6 +116,13 @@
   let selectedEnd   = null;      // check-out (ISO)
   let updatedAt     = null;      // timestamp feed
   let viewMonth     = firstOfMonthUTC(new Date()); // mese mostrato
+
+  // OGGI (mezzanotte UTC) in ISO YYYY-MM-DD -> coerenza con calendario generato in UTC
+  const TODAY_ISO = (() => {
+    const now = new Date();
+    const utcMid = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    return utcMid.toISOString().slice(0,10);
+  })();
 
   function firstOfMonthUTC(d) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)); }
   function addMonthsUTC(d, delta) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + delta, 1)); }
@@ -165,6 +173,10 @@
   }
 
   function renderMonth(){
+    // Selezioni nel passato non sono valide (es.: pagina lasciata aperta oltre mezzanotte)
+    if (selectedStart && selectedStart < TODAY_ISO) { selectedStart = null; selectedEnd = null; }
+    if (selectedEnd && selectedEnd < TODAY_ISO) { selectedEnd = null; }
+
     monthLabel.textContent = viewMonth.toLocaleDateString("it-IT",{ month:"long", year:"numeric" });
     gridEl.innerHTML = "";
     const y = viewMonth.getUTCFullYear();
@@ -188,7 +200,11 @@
       btn.dataset.date = iso;
       btn.textContent = day.getUTCDate();
 
-      if(occupiedSet.has(iso)){
+      const isPast = iso < TODAY_ISO; // NUOVO: giorni passati
+      if (isPast) {
+        btn.classList.add("past");
+        btn.disabled = true;
+      } else if (occupiedSet.has(iso)){
         btn.classList.add("busy");
         btn.disabled = true;
       } else {
@@ -212,14 +228,14 @@
   }
 
   function onDayClick(iso){
-    // Se riclicchi il check-in (e non hai ancora un check-out) -> deseleziona
+    // Deseleziona se riclicchi il check-in (senza check-out)
     if(selectedStart && !selectedEnd && iso === selectedStart){
       selectedStart = null;
       selectedEnd   = null;
       renderMonth();
       return;
     }
-    // Se hai già un intervallo completo e riclicchi il check-in -> reset completo
+    // Reset se riclicchi il check-in quando hai già un intervallo completo
     if(selectedStart && selectedEnd && iso === selectedStart){
       selectedStart = null;
       selectedEnd   = null;
@@ -233,7 +249,7 @@
       renderMonth();
       return;
     }
-    // Secondo click: imposta check-out (deve essere dopo e senza giorni occupati in mezzo)
+    // Secondo click: imposta check-out (dopo e senza giorni occupati in mezzo)
     if(!selectedEnd){
       if(iso <= selectedStart){
         selectedStart = iso;
@@ -249,7 +265,7 @@
       renderMonth();
       return;
     }
-    // Terzo click: inizia nuova selezione (nuovo check-in)
+    // Terzo click: nuova selezione
     selectedStart = iso;
     selectedEnd   = null;
     renderMonth();
@@ -299,6 +315,4 @@
 
   // Avvio
   loadAvailability();
-  </script>
-</body>
-</html>
+</script>
