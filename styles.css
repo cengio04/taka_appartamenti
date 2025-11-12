@@ -584,3 +584,27 @@ p{ margin:.5rem 0; }
   vertical-align:baseline;
 }
 .price-box .small{ margin-top:.65rem; display:block; }
+
+/* Dissolvenza ai bordi della foto hero (left/right) */
+.hero-media img{
+  /* Manteniamo i tuoi stili già esistenti: */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-2);
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+
+  /* Aggiunta: maschera per la dissolvenza laterale */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-media img{
+  animation: heroFadeIn .6s ease-out both;
+}
