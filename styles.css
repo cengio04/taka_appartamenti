@@ -802,3 +802,13 @@ p{ margin:.5rem 0; }
 }
 .day.sel-start, .day.sel-range{ background:#d1f2d1; border-color:#8bc68b; color:#175c17; }
 .day.empty{ visibility:hidden; }
+
+/* Availability: header minimale (nasconde le voci in alto a destra e il bottone "Prenota ora") */
+.page-availability .site-header .nav,
+.page-availability .site-header .nav-menu,
+.page-availability .site-header .nav .btn {
+  display: none !important;
+}
+.page-availability .site-header .header-inner{
+  justify-content:flex-start;
+}
