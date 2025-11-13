@@ -941,3 +941,31 @@ p{ margin:.5rem 0; }
   color: #7C736B;
 }
 */
+/* === Legenda: nuovo quadratino "Check‑out" azzurro === */
+.availability .lg-end::before{
+  background:#cfe4ff;
+  border-color:#9bc0eb;
+}
+
+/* Check‑out (giorno finale) in azzurro ben visibile */
+.page-availability .availability .day.sel-end{
+  background:#DAEEFF;
+  border-color:#6FB3E9;
+  color:#0E4F7F;
+}
+
+/* Giorni passati: quadratini grigi */
+.page-availability .availability .day.past{
+  background:#E8E6E3;
+  border-color:#D6D0C9;
+  color:#8E857D;
+  cursor:not-allowed;
+  box-shadow:none;
+  transform:none;
+}
+.page-availability .availability .day.past:hover{
+  background:#E8E6E3;
+  box-shadow:none;
+}
+
+/* (già esistenti) selezione in verde: .sel-start e .sel-range */
