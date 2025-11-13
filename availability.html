@@ -5,27 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Disponibilità appartamenti – Taká appartamenti</title>
   <meta name="description" content="Verifica disponibilità reale e invia una richiesta su WhatsApp. Seleziona check‑in e check‑out mese per mese.">
+  <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/availability.html">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page-availability">
   <a class="skip-link" href="#main">Salta al contenuto</a>
 
-  <!-- Header minimale con hamburger, coerente con la home -->
-  <header class="site-header header-min">
+  <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo" aria-label="Homepage Taká appartamenti">Taká appartamenti</a>
-      <button class="hamburger" id="hamburger" aria-controls="mobileMenu" aria-expanded="false" aria-label="Apri menu">
-        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
-      </button>
+      <nav class="nav" aria-label="Principale">
+        <ul class="nav-menu">
+          <li><a href="index.html#appartamenti">Appartamenti</a></li>
+          <li><a href="index.html#servizi">Servizi</a></li>
+          <li><a href="index.html#dove-siamo">Dove siamo</a></li>
+          <li><a href="index.html#contatti">Contatti</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav id="mobileMenu" class="mobile-menu" aria-label="Menu mobile">
-      <ul class="mobile-menu-list">
-        <li><a href="index.html#appartamenti">Appartamenti</a></li>
-        <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a href="index.html#dove-siamo">Dove siamo</a></li>
-        <li><a href="index.html#contatti">Contatti</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main id="main">
@@ -72,7 +69,7 @@
         <div id="grid" class="month-grid" role="grid" aria-label="Calendario"></div>
 
         <div id="selBox" class="selection-box">
-          <p>Primo click = <strong>check‑in</strong>, secondo click = <strong>check‑out</strong>. Clicca di nuovo il check‑in per deselezionarlo. I giorni passati sono grigi.</p>
+          <p>Primo click = <strong>check‑in</strong>, secondo click = <strong>check‑out</strong>. Clicca di nuovo il check‑in per deselezionarlo.</p>
           <div id="selInfo"></div>
           <button id="askBtn" class="btn btn-primary" disabled>Richiedi prenotazione su WhatsApp</button>
           <p class="small muted" id="updNote"></p>
@@ -81,17 +78,16 @@
     </section>
   </main>
 
-  <script src="app.js" defer></script>
   <script>
-  // URL del tuo Worker (aggiorna se necessario)
+  // URL del tuo Worker
   const WORKER_BASE = "https://taka-ics.lorenzodibilio04.workers.dev";
 
   // Appartamenti: nome, max ospiti, telefono WhatsApp
   const APTS = {
-    takamusica1: { name: "Takámúsica 1", max: 4, phone: "393667273951" },
-    takamusica2: { name: "Takámúsica 2", max: 5, phone: "393667273951" },
-    takapradalu:{ name: "Takápradalù",  max: 5, phone: "393667273951" },
-    takalcastel:{ name: "Takálcastel",  max: 3, phone: "393667273951" }
+    takamusica1: { name: "Takámúsica 1", max: 4, phone: "3713953195" },
+    takamusica2: { name: "Takámúsica 2", max: 5, phone: "3713953195" },
+    takapradalu:{ name: "Takápradalù",  max: 5, phone: "3713953195" },
+    takalcastel:{ name: "Takálcastel",  max: 3, phone: "3713953195" }
   };
 
   const $ = s => document.querySelector(s);
@@ -110,22 +106,22 @@
   const aptParam = url.searchParams.get("apt");
   if (aptParam && APTS[aptParam]) aptSel.value = aptParam;
 
-  // Stato calendario
-  let occupiedSet   = new Set();
-  let selectedStart = null;
-  let selectedEnd   = null;
-  let updatedAt     = null;
-  let viewMonth     = firstOfMonthUTC(new Date());
+  // Stato globale
+  let occupiedSet   = new Set(); // date occupate YYYY-MM-DD
+  let selectedStart = null;      // check-in (ISO)
+  let selectedEnd   = null;      // check-out (ISO)
+  let updatedAt     = null;      // timestamp feed
+  let viewMonth     = firstOfMonthUTC(new Date()); // mese mostrato
 
-  // Oggi a mezzanotte (UTC) per coerenza con calendario
+  // Oggi (mezzanotte UTC) per marcare giorni passati
   const TODAY_ISO = (() => {
     const now = new Date();
     const utcMid = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
     return utcMid.toISOString().slice(0,10);
   })();
 
-  function firstOfMonthUTC(d){ return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)); }
-  function addMonthsUTC(d, delta){ return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth()+delta, 1)); }
+  function firstOfMonthUTC(d) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)); }
+  function addMonthsUTC(d, delta) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + delta, 1)); }
   function fmtIT(iso){ return new Date(iso).toLocaleDateString("it-IT"); }
   function diffNights(a,b){ return Math.max( (new Date(b)-new Date(a))/(1000*60*60*24), 0 ); }
   function isoYMD(d){ return d.toISOString().slice(0,10); }
@@ -173,7 +169,7 @@
   }
 
   function renderMonth(){
-    // pulizia selezioni scadute
+    // Invalida selezioni nel passato
     if (selectedStart && selectedStart < TODAY_ISO) { selectedStart = null; selectedEnd = null; }
     if (selectedEnd && selectedEnd < TODAY_ISO) { selectedEnd = null; }
 
@@ -184,12 +180,14 @@
     const days = monthDaysUTC(y,m);
     const startW = (new Date(Date.UTC(y,m,1)).getUTCDay()+6)%7; // lun=0
 
+    // celle vuote prima del 1°
     for(let i=0;i<startW;i++){
       const empty = document.createElement("div");
       empty.className = "day empty";
       gridEl.appendChild(empty);
     }
 
+    // giorni del mese
     days.forEach(day=>{
       const iso = isoYMD(day);
       const btn = document.createElement("button");
@@ -209,16 +207,18 @@
         btn.addEventListener("click", ()=> onDayClick(iso));
       }
 
+      // evidenziazione selezione
       if(selectedStart === iso){ btn.classList.add("sel-start"); }
       if(selectedStart && selectedEnd){
         const d = new Date(iso);
         if(d > new Date(selectedStart) && d < new Date(selectedEnd)){
-          btn.classList.add("sel-range");
+          btn.classList.add("sel-range");      // giorni interni (verde)
         }
         if(iso === selectedEnd){
-          btn.classList.add("sel-end"); // check-out azzurro
+          btn.classList.add("sel-end");        // check-out (azzurro)
         }
       }
+
       gridEl.appendChild(btn);
     });
 
@@ -227,31 +227,54 @@
   }
 
   function onDayClick(iso){
-    // deselection: riclic sul check-in
+    // Deseleziona se riclicchi il check-in (senza check-out)
     if(selectedStart && !selectedEnd && iso === selectedStart){
-      selectedStart = null; selectedEnd = null; renderMonth(); return;
+      selectedStart = null;
+      selectedEnd   = null;
+      renderMonth();
+      return;
     }
+    // Reset se riclicchi il check-in quando hai già un intervallo completo
     if(selectedStart && selectedEnd && iso === selectedStart){
-      selectedStart = null; selectedEnd = null; renderMonth(); return;
+      selectedStart = null;
+      selectedEnd   = null;
+      renderMonth();
+      return;
     }
+    // Primo click: imposta check-in
     if(!selectedStart){
-      selectedStart = iso; selectedEnd = null; renderMonth(); return;
+      selectedStart = iso;
+      selectedEnd   = null;
+      renderMonth();
+      return;
     }
+    // Secondo click: imposta check-out (dopo e senza giorni occupati in mezzo)
     if(!selectedEnd){
       if(iso <= selectedStart){
-        selectedStart = iso; selectedEnd = null; renderMonth(); return;
+        selectedStart = iso;
+        selectedEnd   = null;
+        renderMonth();
+        return;
       }
       if(!rangeIsFree(selectedStart, iso)){
-        alert("Il periodo selezionato include giorni occupati. Scegli un intervallo diverso."); return;
+        alert("Il periodo selezionato include giorni occupati. Scegli un intervallo diverso.");
+        return;
       }
-      selectedEnd = iso; renderMonth(); return;
+      selectedEnd = iso;
+      renderMonth();
+      return;
     }
-    selectedStart = iso; selectedEnd = null; renderMonth();
+    // Terzo click: nuova selezione
+    selectedStart = iso;
+    selectedEnd   = null;
+    renderMonth();
   }
 
   function rangeIsFree(aISO, bISO){
-    const a = new Date(aISO), b = new Date(bISO), d = new Date(a);
-    while(d < b){
+    const a = new Date(aISO);
+    const b = new Date(bISO);
+    const d = new Date(a);
+    while(d < b){ // il giorno di check-out è escluso
       const iso = isoYMD(d);
       if(occupiedSet.has(iso)) return false;
       d.setUTCDate(d.getUTCDate()+1);
@@ -268,7 +291,8 @@
       selInfo.innerHTML = `<p>Check‑in: <strong>${fmtIT(selectedStart)}</strong> · Seleziona il check‑out o riclicca per annullare</p>`;
       askBtn.disabled = true;
     } else {
-      selInfo.innerHTML = ""; askBtn.disabled = true;
+      selInfo.innerHTML = "";
+      askBtn.disabled = true;
     }
     syncGuestMax();
   }
@@ -281,12 +305,14 @@
       occupiedSet = new Set(data.occupied || []);
       updatedAt   = data.updatedAt || null;
     }catch(e){
-      occupiedSet = new Set(); updatedAt = null;
+      occupiedSet = new Set();
+      updatedAt   = null;
       alert("Non riesco a caricare la disponibilità. Riprova più tardi.");
     }
     renderMonth();
   }
 
+  // Avvio
   loadAvailability();
   </script>
 </body>
