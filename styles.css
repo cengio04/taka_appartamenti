@@ -969,3 +969,51 @@ p{ margin:.5rem 0; }
 }
 
 /* (già esistenti) selezione in verde: .sel-start e .sel-range */
+.image-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-image {
+  width: 100%;
+  display: block;
+}
+
+.carousel-image.hidden {
+  display: none;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
