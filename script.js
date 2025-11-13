@@ -60,3 +60,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+document.querySelectorAll('.image-carousel').forEach(carousel => {
+  let currentIndex = 0;
+  const images = carousel.querySelectorAll('.carousel-image');
+  const prevBtn = carousel.querySelector('.carousel-prev');
+  const nextBtn = carousel.querySelector('.carousel-next');
+
+  function showImage(index) {
+    images.forEach(img => img.classList.add('hidden'));
+    images[index].classList.remove('hidden');
+  }
+
+  prevBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+});
