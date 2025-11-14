@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Visita guidata al castello – Taká appartamenti</title>
+  <meta name="description" content="Organizza la visita guidata al castello di Cisterna d’Asti: orari, modalità e tariffe (7€ adulti, 5€ bambini).">
+  <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/visita-castello.html">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-castello">
+  <a class="skip-link" href="#main">Salta al contenuto</a>
+
+  <!-- Header minimale (riusa quello nuovo) -->
+  <header class="site-header header-min">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Homepage Taká appartamenti">Taká appartamenti</a>
+    </div>
+    <nav id="mobileMenu" class="mobile-menu" aria-label="Menu mobile">
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section castello-hero">
+      <div class="container castello-grid">
+        <figure class="castello-media">
+          <!-- Sostituisci con la tua foto (es: images/castello.jpg) -->
+            <img src="images/castello.jpg" alt="Veduta del castello di Cisterna d’Asti per le visite guidate" loading="eager">
+        </figure>
+
+        <div class="castello-box">
+          <h1 class="castello-title">Visita guidata al castello</h1>
+          <p>
+            Offriamo la possibilità di una visita guidata al castello di Cisterna d’Asti, ideale per scoprire storia locale,
+            architettura e curiosità del borgo tra Langhe e Roero.
+          </p>
+          <ul class="castello-punti">
+            <li>Durata media: 60 minuti</li>
+            <li>Contenuti: storia, tradizioni, ambienti principali</li>
+            <li>Lingua: italiano, inglese, francese, spagnolo e tedesco (su richiesta)</li>
+          </ul>
+          <div class="tariffe">
+            <h2>Tariffe</h2>
+            <p><strong>7€</strong> a persona (adulti)</p>
+            <p><strong>5€</strong> per bambini (fino a 12 anni)</p>
+          </div>
+          <p class="prenota">
+            Prenotazione semplice: scrivici su WhatsApp indicando numero persone e giorno.
+          </p>
+          <div class="castello-cta">
+            <a class="btn btn-primary btn-sm" href="https://wa.me/3713953195?text=Ciao%2C+vorrei+prenotare+la+visita+guidata+al+castello+di+Cisterna+d%E2%80%99Asti" target="_blank" rel="noopener">
+              Prenota su WhatsApp
+            </a>
+            <a class="btn btn-secondary btn-sm" href="index.html#contatti">Altri contatti</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Taká appartamenti</div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html#appartamenti">Appartamenti</a>
+        <a href="index.html#servizi">Servizi</a>
+        <a href="index.html#contatti">Contatti</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Riusa lo script hamburger se non già caricato globalmente -->
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('mobileMenu');
+      if(!btn || !menu) return;
+      function open(){ btn.setAttribute('aria-expanded','true'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
+      function close(){ btn.setAttribute('aria-expanded','false'); menu.classList.remove('open'); document.body.style.overflow=''; }
+      btn.addEventListener('click', ()=> btn.getAttribute('aria-expanded')==='true'? close(): open());
+      document.addEventListener('click', e=>{
+        if(!menu.classList.contains('open')) return;
+        const inside = e.target.closest('#mobileMenu') || e.target.closest('#hamburger');
+        if(!inside) close();
+      });
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
+      const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
