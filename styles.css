@@ -1017,7 +1017,97 @@ p{ margin:.5rem 0; }
 .carousel-btn:hover {
   background: rgba(255, 255, 255, 1);
 }
-:root{
-  --mustard-bg:#fbf1d7;
-  --mustard-border:#e8d7a9;
+/* === Pagina visita castello === */
+.page-castello .castello-grid{
+  display:grid;
+  gap:24px;
+}
+@media (min-width:880px){
+  .page-castello .castello-grid{
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items:start;
+  }
+}
+.page-castello .castello-media img{
+  width:100%;
+  display:block;
+  border-radius:18px;
+  object-fit:cover;
+  max-height:520px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.page-castello .castello-box{
+  background: var(--mustard-bg,#fbf1d7);
+  border:1px solid var(--mustard-border,#e8d7a9);
+  border-radius:18px;
+  padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 3vw, 1.6rem);
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+}
+.page-castello .castello-title{
+  margin:0 0 .6rem;
+  font-size: clamp(1.55rem,5vw,2.1rem);
+  line-height:1.15;
+}
+.page-castello .castello-punti{
+  list-style:none;
+  padding:0;
+  margin:.85rem 0 1.1rem;
+  display:grid;
+  gap:.4rem;
+}
+.page-castello .castello-punti li{
+  position:relative;
+  padding-left:20px;
+  font-size:.95rem;
+}
+.page-castello .castello-punti li::before{
+  content:"•";
+  position:absolute;
+  left:4px;
+  top:0;
+  color:#b5763f;
+  font-weight:700;
+}
+.page-castello .tariffe h2{
+  margin:.2rem 0 .4rem;
+  font-size:1.15rem;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.page-castello .tariffe p{ margin:.15rem 0; font-size:1rem; font-weight:600; }
+.page-castello .prenota{
+  margin: .9rem 0 .7rem;
+  font-size:.95rem;
+}
+.page-castello .castello-cta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:.4rem;
+}
+.page-castello .btn-sm{
+  padding:8px 14px;
+  font-size:.85rem;
+  font-weight:700;
+  border-radius:999px;
+}
+.page-castello .btn-primary{
+  background:#a65a36;
+  color:#fff;
+  text-decoration:none;
+}
+.page-castello .btn-secondary{
+  background:#fff;
+  color:#2b241f;
+  border:1px solid var(--border,#e5ddd3);
+  text-decoration:none;
+}
+@media (max-width:520px){
+  .page-castello .castello-box{
+    padding: 1rem 1.1rem 1.15rem;
+  }
+  .page-castello .castello-title{
+    font-size:1.6rem;
+  }
+  .page-castello .castello-cta{ gap:8px; }
 }
