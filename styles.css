@@ -1017,3 +1017,7 @@ p{ margin:.5rem 0; }
 .carousel-btn:hover {
   background: rgba(255, 255, 255, 1);
 }
+:root{
+  --mustard-bg:#fbf1d7;
+  --mustard-border:#e8d7a9;
+}
