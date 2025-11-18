@@ -17,9 +17,9 @@
       <nav class="nav" aria-label="Principale">
         <ul class="nav-menu">
           <li><a href="index.html#appartamenti">Appartamenti</a></li>
-          <li><a href="index.html#servizi">Servizi</a></li>
-          <li><a href="index.html#dove-siamo">Dove siamo</a></li>
-          <li><a href="index.html#contatti">Contatti</a></li>
+            <li><a href="index.html#servizi">Servizi</a></li>
+            <li><a href="index.html#dove-siamo">Dove siamo</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
         </ul>
       </nav>
     </div>
@@ -46,7 +46,7 @@
             <input id="guests" type="number" min="1" value="2" inputmode="numeric">
           </label>
 
-          <div class="legend">
+          <div class="legend" aria-label="Legenda stato date">
             <span class="lg lg-free">Disponibile</span>
             <span class="lg lg-busy">Occupato</span>
             <span class="lg lg-end">Check‑out</span>
@@ -68,6 +68,13 @@
         <!-- Calendario del mese corrente -->
         <div id="grid" class="month-grid" role="grid" aria-label="Calendario"></div>
 
+        <!-- Sezione codici CIN e CIR -->
+        <div id="apt-info" class="apt-info" aria-labelledby="aptInfoHeading">
+          <h2 id="aptInfoHeading" class="visually-hidden">Codici identificativi struttura</h2>
+          <p><strong>Codice CIN:</strong> <span id="cin-code">—</span></p>
+          <p><strong>Codice CIR:</strong> <span id="cir-code">—</span></p>
+        </div>
+
         <div id="selBox" class="selection-box">
           <p>Primo click = <strong>check‑in</strong>, secondo click = <strong>check‑out</strong>. Clicca di nuovo il check‑in per deselezionarlo.</p>
           <div id="selInfo"></div>
@@ -82,12 +89,13 @@
   // URL del tuo Worker
   const WORKER_BASE = "https://taka-ics.lorenzodibilio04.workers.dev";
 
-  // Appartamenti: nome, max ospiti, telefono WhatsApp
+  // Appartamenti: nome, max ospiti, telefono WhatsApp, codici CIN e CIR
+  // Sostituisci i valori cin/cir con quelli reali
   const APTS = {
-    takamusica1: { name: "Takámúsica 1", max: 4, phone: "3713953195" },
-    takamusica2: { name: "Takámúsica 2", max: 5, phone: "3713953195" },
-    takapradalu:{ name: "Takápradalù",  max: 5, phone: "3713953195" },
-    takalcastel:{ name: "Takálcastel",  max: 3, phone: "3713953195" }
+    takamusica1: { name: "Takámúsica 1", max: 4, phone: "3713953195", cin: "CIN-INSERIRE-1", cir: "CIR-INSERIRE-1" },
+    takamusica2: { name: "Takámúsica 2", max: 5, phone: "3713953195", cin: "CIN-INSERIRE-2", cir: "CIR-INSERIRE-2" },
+    takapradalu:{ name: "Takápradalù",  max: 5, phone: "3713953195", cin: "CIN-INSERIRE-3", cir: "CIR-INSERIRE-3" },
+    takalcastel:{ name: "Takálcastel",  max: 3, phone: "3713953195", cin: "CIN-INSERIRE-4", cir: "CIR-INSERIRE-4" }
   };
 
   const $ = s => document.querySelector(s);
@@ -100,6 +108,8 @@
   const monthLabel  = $("#monthLabel");
   const prevBtn     = $("#prevMonth");
   const nextBtn     = $("#nextMonth");
+  const cinCodeEl   = $("#cin-code");
+  const cirCodeEl   = $("#cir-code");
 
   // Pre-selezione da query string (?apt=…)
   const url = new URL(location.href);
@@ -132,11 +142,20 @@
     if (+guestsInput.value < 1) guestsInput.value = 1;
     if (+guestsInput.value > APTS[a].max) guestsInput.value = APTS[a].max;
   }
+
+  function updateAptInfo(){
+    const a = aptSel.value;
+    cinCodeEl.textContent = APTS[a].cin || "—";
+    cirCodeEl.textContent = APTS[a].cir || "—";
+  }
+
   syncGuestMax();
+  updateAptInfo();
   guestsInput.addEventListener("change", syncGuestMax);
 
   aptSel.addEventListener("change", ()=>{
     syncGuestMax();
+    updateAptInfo();
     selectedStart = selectedEnd = null;
     viewMonth = firstOfMonthUTC(new Date());
     renderMonth();
@@ -212,10 +231,10 @@
       if(selectedStart && selectedEnd){
         const d = new Date(iso);
         if(d > new Date(selectedStart) && d < new Date(selectedEnd)){
-          btn.classList.add("sel-range");      // giorni interni (verde)
+          btn.classList.add("sel-range"); // giorni interni
         }
         if(iso === selectedEnd){
-          btn.classList.add("sel-end");        // check-out (azzurro)
+          btn.classList.add("sel-end");
         }
       }
 
@@ -241,14 +260,14 @@
       renderMonth();
       return;
     }
-    // Primo click: imposta check-in
+    // Primo click
     if(!selectedStart){
       selectedStart = iso;
       selectedEnd   = null;
       renderMonth();
       return;
     }
-    // Secondo click: imposta check-out (dopo e senza giorni occupati in mezzo)
+    // Secondo click
     if(!selectedEnd){
       if(iso <= selectedStart){
         selectedStart = iso;
