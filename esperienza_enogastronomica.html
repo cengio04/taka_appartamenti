@@ -2,319 +2,397 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Sapori di Cisterna – Degustazione a Domicilio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Collega questo CSS oppure integra gli stili nel foglio principale -->
-  <link rel="stylesheet" href="css/esperienza_enogastronomica.css">
-</head>
-<body>
+  <title>Sapori di Cisterna – Degustazione enogastronomica a domicilio | Taká appartamenti</title>
+  <meta name="description" content="Vini locali di Cisterna d’Asti e prodotti tipici selezionati, consegnati direttamente in appartamento. Ordina su WhatsApp e paga con Satispay, PayPal o bonifico.">
+  <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/esperienza_enogastronomica.html">
 
-  <header class="hero">
-    <div class="hero-content">
-      <h1>Sapori di Cisterna – Degustazione a Domicilio</h1>
-      <p>Vini locali di Cisterna d’Asti e prodotti tipici selezionati, direttamente a casa tua.</p>
+  <meta property="og:title" content="Sapori di Cisterna – Degustazione a domicilio">
+  <meta property="og:description" content="Vini locali e prodotti tipici di Cisterna d’Asti, direttamente in appartamento.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://cengio04.github.io/taka_appartamenti/esperienza_enogastronomica.html">
+  <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/background-vigneti.jpg">
+  <meta property="og:locale" content="it_IT">
+
+  <meta name="theme-color" content="#C2703D">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🍷</text></svg>'>
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1F1B17; --muted:#7c7268; --soft:#F5EFE7; --line:#EFE9E1;
+      --acc:#C2703D; --acc-d:#a85c2f; --wine:#7A2E3A;
+    }
+    .en{ font-family:"Hanken Grotesk",system-ui,sans-serif; color:var(--ink); background:#fff; }
+    .en *{ box-sizing:border-box; }
+    .en h1,.en h2,.en h3,.en .brand-name,.en .price-tag,.en .num{ font-family:"Space Grotesk",system-ui,sans-serif; letter-spacing:-.02em; }
+    .en img{ max-width:100%; display:block; }
+    .wrap{ max-width:1120px; margin-inline:auto; padding-inline:24px; }
+    .en a{ text-decoration:none; }
+    .eyebrow{ font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); font-weight:600; }
+
+    /* Header */
+    .en-head{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line); }
+    .en-head-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:68px; }
+    .brand{ display:flex; align-items:center; gap:11px; color:var(--ink); }
+    .brand img{ width:40px; height:40px; object-fit:contain; }
+    .brand-name{ font-size:19px; font-weight:700; }
+    .brand-name b{ color:var(--acc); }
+    .en-nav{ display:flex; align-items:center; gap:22px; }
+    .en-nav a{ color:#544b41; font-size:14.5px; font-weight:500; }
+    .en-nav a:hover{ color:var(--acc); }
+    .en-wa{ display:inline-flex; align-items:center; gap:8px; background:var(--acc); color:#fff; padding:11px 20px; border-radius:9px; font-size:14px; font-weight:600; }
+    .en-wa:hover{ background:var(--acc-d); }
+
+    /* Hero */
+    .en-hero{ padding-block:56px; }
+    .en-hero .grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+    .en-hero h1{ font-size:clamp(2.1rem,4.6vw,3.2rem); line-height:1.04; margin:16px 0 18px; }
+    .en-hero p.lead{ font-size:clamp(1.02rem,1.4vw,1.18rem); line-height:1.6; color:#5b5248; margin:0 0 26px; max-width:46ch; }
+    .cta{ display:flex; flex-wrap:wrap; gap:12px; }
+    .btn-solid{ display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--acc); color:#fff; padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-solid:hover{ background:var(--acc-d); }
+    .btn-ghost{ display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1.5px solid var(--line); color:var(--ink); padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-ghost:hover{ border-color:var(--acc); color:var(--acc); }
+    .en-hero-media{ background:linear-gradient(160deg,#F7F1E8,#EADBCB); border-radius:20px; height:440px; display:flex; align-items:center; justify-content:center; padding:24px; box-shadow:0 30px 60px -36px rgba(31,27,23,.5); }
+    .en-hero-media img{ height:100%; width:auto; object-fit:contain; filter:drop-shadow(0 24px 30px rgba(0,0,0,.28)); }
+
+    /* Steps */
+    .steps{ background:var(--ink); color:#f2e9df; }
+    .steps .wrap{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; padding-block:38px; }
+    .step{ display:flex; gap:14px; align-items:flex-start; }
+    .step .n{ flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:var(--acc); color:#fff; display:flex; align-items:center; justify-content:center; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:15px; }
+    .step h3{ margin:2px 0 4px; font-size:16px; color:#fff; }
+    .step p{ margin:0; font-size:14px; color:#cbbeb0; line-height:1.5; }
+    .step a{ color:#f0c9b4; font-weight:600; }
+
+    /* Sections */
+    .sec{ padding-block:60px; }
+    .sec.soft{ background:var(--soft); }
+    .sec-h{ margin-bottom:30px; max-width:720px; }
+    .sec-h h2{ font-size:clamp(1.8rem,3.2vw,2.3rem); margin:0 0 10px; }
+    .sec-h p{ color:#5b5248; font-size:15.5px; line-height:1.6; margin:0; }
+
+    /* Wine cards */
+    .wines{ display:flex; flex-direction:column; gap:22px; }
+    .wine{ display:grid; grid-template-columns:230px 1fr; gap:30px; border:1px solid var(--line); border-radius:20px; padding:22px; background:#fff; }
+    .wine-img{ background:linear-gradient(160deg,#FbF7F1,#F0E6D9); border-radius:16px; display:flex; align-items:center; justify-content:center; padding:20px; min-height:300px; }
+    .wine-img img{ height:300px; width:auto; max-width:100%; object-fit:contain; filter:drop-shadow(0 16px 22px rgba(0,0,0,.22)); }
+    .wine-ph{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--wine); text-align:center; }
+    .wine-ph .g{ font-size:56px; }
+    .wine-ph small{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+    .wine-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+    .wine h3{ margin:0 0 4px; font-size:21px; }
+    .wine .sub{ color:var(--acc); font-size:13.5px; font-weight:600; margin:0 0 14px; }
+    .price-tag{ font-size:24px; font-weight:700; color:var(--ink); white-space:nowrap; }
+    .wine p.desc{ margin:0 0 14px; color:#5b5248; font-size:14.5px; line-height:1.6; }
+    .facts{ display:grid; gap:8px; margin:0 0 14px; }
+    .facts div{ font-size:14px; color:#4a4139; }
+    .facts strong{ font-family:"Space Grotesk",sans-serif; color:var(--ink); font-weight:600; }
+    .pair{ margin:0; background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:12px 16px; font-size:14px; color:#4a4139; line-height:1.55; }
+    .pair strong{ color:var(--acc); }
+
+    /* Products */
+    .prods{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .prod{ border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#fff; }
+    .prod img{ width:100%; height:200px; object-fit:cover; }
+    .prod .body{ padding:22px; }
+    .prod h3{ margin:0 0 8px; font-size:18px; }
+    .prod p{ margin:0; color:#5b5248; font-size:14px; line-height:1.55; }
+
+    /* CTA order */
+    .order{ background:var(--ink); color:#f2e9df; }
+    .order .wrap{ padding-block:56px; }
+    .order h2{ color:#fff; font-size:clamp(1.7rem,3vw,2.2rem); margin:0 0 10px; }
+    .order .lead{ color:#cbbeb0; font-size:15.5px; margin:0 0 28px; max-width:56ch; line-height:1.6; }
+    .order-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .order-card{ background:#2a231d; border:1px solid #3a3128; border-radius:16px; padding:24px; }
+    .order-card h3{ color:#fff; font-size:17px; margin:0 0 12px; }
+    .order-card a{ color:#f0c9b4; font-weight:700; }
+    .pay{ display:flex; flex-wrap:wrap; gap:10px; }
+    .pay span{ font-size:13.5px; color:#f2e9df; background:#3a3128; border:1px solid #4a4034; padding:8px 14px; border-radius:999px; }
+    .order .wa{ display:inline-flex; align-items:center; gap:8px; margin-top:26px; background:var(--acc); color:#fff; padding:15px 30px; border-radius:10px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; }
+    .order .wa:hover{ background:var(--acc-d); }
+
+    /* Footer */
+    .foot{ background:var(--ink); color:#a89a86; border-top:1px solid #3a3128; }
+    .foot .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:26px; flex-wrap:wrap; font-size:13.5px; }
+    .foot a{ color:#c7b9a6; } .foot a:hover{ color:#fff; }
+    .foot-nav{ display:flex; gap:18px; flex-wrap:wrap; }
+
+    .skip-link{ position:absolute; left:-999px; top:-999px; }
+    .skip-link:focus{ left:8px; top:8px; z-index:999; background:var(--acc); color:#fff; padding:.5rem .75rem; border-radius:8px; }
+
+    @media (max-width:900px){
+      .en-nav .hide-sm{ display:none; }
+      .en-hero .grid{ grid-template-columns:1fr; gap:28px; }
+      .en-hero-media{ height:360px; }
+      .steps .wrap{ grid-template-columns:1fr; gap:18px; padding-block:28px; }
+      .wine{ grid-template-columns:1fr; gap:20px; }
+      .wine-img{ min-height:240px; }
+      .wine-img img{ height:240px; }
+      .prods{ grid-template-columns:1fr; }
+      .order-grid{ grid-template-columns:1fr; }
+    }
+    @media (max-width:520px){
+      .wrap{ padding-inline:16px; }
+      .en-hero{ padding-block:36px; }
+      .brand-name{ font-size:17px; }
+    }
+  </style>
+</head>
+
+<body class="en">
+  <a class="skip-link" href="#main">Salta al contenuto</a>
+
+  <header class="en-head">
+    <div class="wrap en-head-in">
+      <a href="index.html" class="brand" aria-label="Homepage Taká appartamenti">
+        <img src="images/logof.png" alt="Logo Taká appartamenti" width="40" height="40">
+        <span class="brand-name">Taká<b>/</b>appartamenti</span>
+      </a>
+      <nav class="en-nav" aria-label="Principale">
+        <a href="index.html#servizi" class="hide-sm">Servizi</a>
+        <a href="index.html#appartamenti" class="hide-sm">Appartamenti</a>
+        <a class="en-wa js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">💬 Ordina</a>
+      </nav>
     </div>
   </header>
 
-  <main class="page-container">
-
-    <!-- Sezione: Come funziona -->
-    <section class="section how-it-works" id="come-funziona">
-      <h2>Come funziona in 3 semplici passi</h2>
-      <ol class="steps">
-        <li>
-          <h3>1. Sfoglia il catalogo</h3>
-          <p>Scegli tra i vini locali di Cisterna e i prodotti tipici selezionati da fornitori di fiducia.</p>
-        </li>
-        <li>
-          <h3>2. Scrivi su WhatsApp</h3>
-          <p>
-            Invia un messaggio al
-            <a href="https://wa.me/393713953195" target="_blank" rel="noopener noreferrer">
-              371 395 3195
-            </a>
-            indicando i prodotti che desideri ordinare e le quantità.
-          </p>
-        </li>
-        <li>
-          <h3>3. Paga in modo veloce e sicuro</h3>
-          <p>
-            Riceverai le istruzioni per il pagamento con
-            <strong>Satispay</strong>, <strong>PayPal</strong> o <strong>bonifico istantaneo</strong>.
-          </p>
-        </li>
-      </ol>
+  <main id="main">
+    <!-- Hero -->
+    <section class="en-hero">
+      <div class="wrap grid">
+        <div>
+          <span class="eyebrow">Servizio · Degustazione a domicilio</span>
+          <h1>Sapori di Cisterna</h1>
+          <p class="lead">Vini locali di Cisterna d’Asti e prodotti tipici selezionati, consegnati direttamente nel tuo appartamento. Scegli, scrivici su WhatsApp e goditi la degustazione.</p>
+          <div class="cta">
+            <a class="btn-solid js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">💬 Ordina su WhatsApp</a>
+            <a class="btn-ghost" href="index.html#servizi">← Torna ai servizi</a>
+          </div>
+        </div>
+        <div class="en-hero-media">
+          <img src="images/vini/barolo-priore-2021.jpg" alt="Bottiglia di Barolo Priore, Cantine Povero">
+        </div>
+      </div>
     </section>
 
-    <!-- Sezione: Vini -->
-    <section class="section wines" id="vini">
-      <h2>I nostri vini</h2>
-      <p class="section-intro">
-        Tutti i vini proposti sono locali di Cisterna d’Asti e dintorni, selezionati per valorizzare
-        vitigni autoctoni e la tradizione del territorio.
-      </p>
-
-      <!-- Scheda vino 1 -->
-      <article class="wine-card">
-        <div class="wine-image">
-          <!-- Sostituisci src e alt con la foto reale -->
-          <img src="images/vini/barolo-priore-2021.jpg" alt="Bottiglia di Barolo Priore 2021 Cantine Povero">
-          
+    <!-- Come funziona -->
+    <section class="steps" id="come-funziona">
+      <div class="wrap">
+        <div class="step">
+          <div class="n">1</div>
+          <div><h3>Sfoglia il catalogo</h3><p>Scegli tra i vini locali di Cisterna e i prodotti tipici selezionati da fornitori di fiducia.</p></div>
         </div>
-        <div class="wine-content">
-          <header class="wine-header">
-            <h3>Barolo “Priore” 2021 – Cantine Povero</h3>
-            <div class="wine-price">30€</div>
-          </header>
-          <p class="wine-subtitle">Vino rosso strutturato da invecchiamento – Vitigno: 100% Nebbiolo</p>
-
-          <p>
-            Il Nebbiolo viene raccolto a piena maturazione selezionando i grappoli migliori. Dopo la
-            fermentazione in vasche di acciaio, il vino affina tradizionalmente in botti di legno,
-            sviluppando complessità aromatica, tannini eleganti e grande longevità. L’annata 2021 unisce
-            freschezza, struttura e intensa profondità aromatica.
-          </p>
-
-          <ul class="wine-details">
-            <li><strong>Colore:</strong> rosso granato con riflessi aranciati nel tempo</li>
-            <li><strong>Profumi:</strong> rosa appassita, viola, frutti rossi maturi, spezie dolci, liquirizia</li>
-            <li><strong>Gusto:</strong> pieno, tannico ma armonico, di lunga persistenza</li>
-          </ul>
-
-          <p class="wine-pairing">
-            <strong>Abbinamenti consigliati:</strong> carni rosse, brasati, formaggi stagionati e salumi di carattere
-            come il Salame di Pavia.
-          </p>
+        <div class="step">
+          <div class="n">2</div>
+          <div><h3>Scrivi su WhatsApp</h3><p>Invia un messaggio al <a class="js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">371 395 3195</a> indicando prodotti e quantità.</p></div>
         </div>
-      </article>
-
-      <!-- Scheda vino 2 -->
-      <article class="wine-card">
-        <div class="wine-image">
-          <img src="images/vini/cisterna-superiore-terre-di-chiesa.jpg" alt="Bottiglia di Cisterna Superiore Terre di Chiesa">
-          
+        <div class="step">
+          <div class="n">3</div>
+          <div><h3>Paga in modo sicuro</h3><p>Riceverai le istruzioni per pagare con Satispay, PayPal o bonifico istantaneo.</p></div>
         </div>
-        <div class="wine-content">
-          <header class="wine-header">
-            <h3>Cisterna Superiore “Terre di Chiesa”</h3>
-            <div class="wine-price">15€</div>
-          </header>
-          <p class="wine-subtitle">Vino rosso strutturato – Vitigno principale: Croatina</p>
-
-          <p>
-            La <strong>Croatina</strong> è un’uva a bacca rossa tipica del Nord Italia che trova a Cisterna d’Asti
-            un ambiente ideale: suoli collinari e clima ventilato danno vini intensi, dal colore profondo, con
-            tannini ben presenti e una spiccata componente fruttata. Da questo vitigno, lavorato con cura, nasce anche
-            il Cisterna d’Asti DOC, simbolo enologico del territorio.
-          </p>
-
-          <p>
-            Le uve vengono vendemmiate a perfetta maturazione, fermentate in acciaio con macerazione sulle bucce
-            per estrarre colore e struttura, e successivamente affinate (in acciaio e/o legno) per armonizzare
-            il profilo gustativo e integrare la componente tannica.
-          </p>
-
-          <ul class="wine-details">
-            <li><strong>Colore:</strong> rosso rubino carico</li>
-            <li><strong>Profumi:</strong> frutta rossa e nera matura, leggere note speziate</li>
-            <li><strong>Gusto:</strong> pieno, morbido, con tannino deciso ma bilanciato</li>
-          </ul>
-
-          <p class="wine-pairing">
-            <strong>Abbinamenti consigliati:</strong> salumi tipici come il Salame di Pavia, formaggi semistagionati
-            e piatti della tradizione piemontese. Ottimo anche con Robiola d’Alba.
-          </p>
-        </div>
-      </article>
-
-      <!-- Scheda vino 3 -->
-      <article class="wine-card">
-        <div class="wine-image">
-          <img src="images/vini/cisterna-asti-doc-cantine-bailu.jpg" alt="Bottiglia di Cisterna d’Asti DOC Cantine Bailu">
-          
-        </div>
-        <div class="wine-content">
-          <header class="wine-header">
-            <h3>Cisterna d’Asti DOC – Cantine Bailu</h3>
-            <div class="wine-price">15€</div>
-          </header>
-          <p class="wine-subtitle">Denominazione di Origine Controllata – Vitigno: Croatina</p>
-
-          <p>
-            Il <strong>Cisterna d’Asti DOC</strong> nasce per valorizzare la Croatina coltivata sulle colline di Cisterna.
-            Qui l’uva raggiunge un perfetto equilibrio tra maturazione zuccherina, acidità e profilo aromatico,
-            dando vini intensi nel colore, ricchi di aromi di frutta rossa e dotati di buona struttura e freschezza.
-          </p>
-
-          <p>
-            Le uve selezionate sono vinificate in rosso con macerazione prolungata sulle bucce per esaltare colore
-            e corpo. L’affinamento in acciaio o legno preserva l’identità del vitigno e del territorio, senza
-            coprire i profumi originari.
-          </p>
-
-          <ul class="wine-details">
-            <li><strong>Colore:</strong> rosso rubino intenso</li>
-            <li><strong>Profumi:</strong> ciliegia, mora, lampone, cenni di spezia</li>
-            <li><strong>Gusto:</strong> fresco, sapido, con tannini presenti ma equilibrati</li>
-          </ul>
-
-          <p class="wine-pairing">
-            <strong>Abbinamenti consigliati:</strong> salumi misti, Tumalin e formaggi morbidi come la Robiola d’Alba.
-            Perfetto per una merenda sinoira o un tagliere di prodotti tipici.
-          </p>
-        </div>
-      </article>
-
-      <!-- Scheda vino 4 -->
-      <article class="wine-card">
-        <div class="wine-image">
-          <img src="images/vini/tumlin-tenuta-larame-roero-2022.jpg" alt="Bottiglia di Tumlin Tenuta Laramè Roero 2022">
-          
-        </div>
-        <div class="wine-content">
-          <header class="wine-header">
-            <h3>Tumlin – Tenuta Laramè Roero 2022</h3>
-            <div class="wine-price">15€</div>
-          </header>
-          <p class="wine-subtitle">Vino rosso delle colline del Roero</p>
-
-          <p>
-            Le uve crescono sulle colline sabbiose del Roero, che regalano al vino eleganza, freschezza e profumi
-            intensi. Dopo la vendemmia, la vinificazione avviene in rosso con macerazione sulle bucce per estrarre
-            colore e aromi, seguita da un affinamento che mantiene vivida la componente fruttata e la piacevole
-            bevibilità.
-          </p>
-
-          <ul class="wine-details">
-            <li><strong>Colore:</strong> rosso brillante</li>
-            <li><strong>Profumi:</strong> frutti rossi freschi, viola, leggere note speziate</li>
-            <li><strong>Gusto:</strong> equilibrato, fresco, con tannino fine e buona persistenza</li>
-          </ul>
-
-          <p class="wine-pairing">
-            <strong>Abbinamenti consigliati:</strong> affettati misti, Tumalin, formaggi a pasta molle
-            e piatti di carne bianca o rossa non troppo strutturati.
-          </p>
-        </div>
-      </article>
-
-      <!-- Scheda vino 5 -->
-      <article class="wine-card">
-        <div class="wine-image">
-          <img src="images/vini/bianco-spumante-extra-dry.jpg" alt="Bottiglia di vino bianco spumante Extra Dry">
-          
-        </div>
-        <div class="wine-content">
-          <header class="wine-header">
-            <h3>Vino bianco spumante Extra Dry</h3>
-            <div class="wine-price">20€</div>
-          </header>
-          <p class="wine-subtitle">Vino bianco spumante – Extra Dry</p>
-
-          <p>
-            Le uve bianche vengono raccolte in leggero anticipo per preservare freschezza e acidità.
-            La prima fermentazione avviene a bassa temperatura per mantenere aromi fruttati e floreali,
-            seguita dalla presa di spuma in autoclave (metodo Charmat) che dona perlage fine e persistente.
-            La versione Extra Dry offre un perfetto equilibrio tra morbidezza e freschezza.
-          </p>
-
-          <ul class="wine-details">
-            <li><strong>Colore:</strong> giallo paglierino brillante con riflessi verdolini</li>
-            <li><strong>Profumi:</strong> fiori bianchi, mela verde, pera, agrumi delicati</li>
-            <li><strong>Gusto:</strong> fresco, vivace, con bollicina fine e finale morbido e armonico</li>
-          </ul>
-
-          <p class="wine-pairing">
-            <strong>Abbinamenti consigliati:</strong> perfetto come aperitivo con Robiola d’Alba, Tumalin e piccole
-            degustazioni di salumi. Ideale anche con piatti leggeri di pesce e verdure.
-          </p>
-        </div>
-      </article>
-
+      </div>
     </section>
 
-    <!-- Sezione: Prodotti tipici -->
-    <section class="section products" id="prodotti">
-      <h2>Prodotti tipici da abbinare ai vini</h2>
+    <!-- Vini -->
+    <section class="sec" id="vini">
+      <div class="wrap">
+        <div class="sec-h">
+          <h2>I nostri vini</h2>
+          <p>Tutti i vini proposti sono locali di Cisterna d’Asti e dintorni, selezionati per valorizzare i vitigni autoctoni e la tradizione del territorio.</p>
+        </div>
 
-      <div class="products-grid">
+        <div class="wines">
+          <!-- Vino 1 -->
+          <article class="wine">
+            <div class="wine-img"><img src="images/vini/barolo-priore-2021.jpg" alt="Bottiglia di Barolo Priore 2021, Cantine Povero"></div>
+            <div>
+              <div class="wine-top">
+                <div>
+                  <h3>Barolo “Priore” 2021 – Cantine Povero</h3>
+                  <p class="sub">Rosso da invecchiamento · 100% Nebbiolo</p>
+                </div>
+                <span class="price-tag">30€</span>
+              </div>
+              <p class="desc">Il Nebbiolo viene raccolto a piena maturazione selezionando i grappoli migliori. Dopo la fermentazione in acciaio, affina in botti di legno sviluppando complessità aromatica, tannini eleganti e grande longevità. L’annata 2021 unisce freschezza, struttura e intensa profondità.</p>
+              <div class="facts">
+                <div><strong>Colore:</strong> rosso granato con riflessi aranciati nel tempo</div>
+                <div><strong>Profumi:</strong> rosa appassita, viola, frutti rossi maturi, spezie dolci, liquirizia</div>
+                <div><strong>Gusto:</strong> pieno, tannico ma armonico, di lunga persistenza</div>
+              </div>
+              <p class="pair"><strong>Abbinamenti:</strong> carni rosse, brasati, formaggi stagionati e salumi di carattere come il Salame di Pavia.</p>
+            </div>
+          </article>
 
-        <article class="product-card">
-          <div class="product-image">
-            <img src="images/prodotti/salame-di-pavia.jpg" alt="Salame di Pavia">
-            
-          </div>
-          <div class="product-content">
-            <h3>Salame di Pavia</h3>
-            <p>
-              Salume tipico della tradizione lombarda, dal gusto pieno e deciso, ideale da servire a
-              fette spesse. Perfetto in abbinamento ai vini rossi più strutturati come il Barolo Priore
-              e il Cisterna Superiore “Terre di Chiesa”.
-            </p>
-          </div>
-        </article>
+          <!-- Vino 2 -->
+          <article class="wine">
+            <div class="wine-img"><img src="images/vini/cisterna-superiore-terre-di-chiesa.jpg" alt="Bottiglia di Cisterna Superiore Terre di Chiesa"></div>
+            <div>
+              <div class="wine-top">
+                <div>
+                  <h3>Cisterna Superiore “Terre di Chiesa”</h3>
+                  <p class="sub">Rosso strutturato · Croatina</p>
+                </div>
+                <span class="price-tag">15€</span>
+              </div>
+              <p class="desc">La Croatina trova a Cisterna d’Asti un ambiente ideale: suoli collinari e clima ventilato danno vini intensi, dal colore profondo, con tannini ben presenti e spiccata componente fruttata. Le uve sono fermentate in acciaio con macerazione sulle bucce e poi affinate per armonizzare il profilo gustativo.</p>
+              <div class="facts">
+                <div><strong>Colore:</strong> rosso rubino carico</div>
+                <div><strong>Profumi:</strong> frutta rossa e nera matura, leggere note speziate</div>
+                <div><strong>Gusto:</strong> pieno, morbido, con tannino deciso ma bilanciato</div>
+              </div>
+              <p class="pair"><strong>Abbinamenti:</strong> salumi tipici come il Salame di Pavia, formaggi semistagionati e piatti della tradizione piemontese. Ottimo con Robiola d’Alba.</p>
+            </div>
+          </article>
 
-        <article class="product-card">
-          <div class="product-image">
+          <!-- Vino 3 (senza foto) -->
+          <article class="wine">
+            <div class="wine-img"><div class="wine-ph"><span class="g">🍷</span><small>Foto in arrivo</small></div></div>
+            <div>
+              <div class="wine-top">
+                <div>
+                  <h3>Cisterna d’Asti DOC – Cantine Bailu</h3>
+                  <p class="sub">Denominazione di Origine Controllata · Croatina</p>
+                </div>
+                <span class="price-tag">15€</span>
+              </div>
+              <p class="desc">Il Cisterna d’Asti DOC nasce per valorizzare la Croatina coltivata sulle colline di Cisterna, dove l’uva raggiunge un perfetto equilibrio tra maturazione, acidità e profilo aromatico. Vinificato in rosso con macerazione prolungata sulle bucce e affinato in acciaio o legno per preservare l’identità del vitigno.</p>
+              <div class="facts">
+                <div><strong>Colore:</strong> rosso rubino intenso</div>
+                <div><strong>Profumi:</strong> ciliegia, mora, lampone, cenni di spezia</div>
+                <div><strong>Gusto:</strong> fresco, sapido, con tannini presenti ma equilibrati</div>
+              </div>
+              <p class="pair"><strong>Abbinamenti:</strong> salumi misti, Tumalin e formaggi morbidi come la Robiola d’Alba. Perfetto per una merenda sinoira.</p>
+            </div>
+          </article>
+
+          <!-- Vino 4 -->
+          <article class="wine">
+            <div class="wine-img"><img src="images/vini/tumlin-tenuta-larame-roero-2022.jpg" alt="Bottiglia di Tumlin Tenuta Laramè Roero 2022"></div>
+            <div>
+              <div class="wine-top">
+                <div>
+                  <h3>Tumlin – Tenuta Laramè Roero 2022</h3>
+                  <p class="sub">Rosso delle colline del Roero</p>
+                </div>
+                <span class="price-tag">15€</span>
+              </div>
+              <p class="desc">Le uve crescono sulle colline sabbiose del Roero, che regalano al vino eleganza, freschezza e profumi intensi. Vinificazione in rosso con macerazione sulle bucce e affinamento che mantiene vivida la componente fruttata e la piacevole bevibilità.</p>
+              <div class="facts">
+                <div><strong>Colore:</strong> rosso brillante</div>
+                <div><strong>Profumi:</strong> frutti rossi freschi, viola, leggere note speziate</div>
+                <div><strong>Gusto:</strong> equilibrato, fresco, con tannino fine e buona persistenza</div>
+              </div>
+              <p class="pair"><strong>Abbinamenti:</strong> affettati misti, Tumalin, formaggi a pasta molle e carni bianche o rosse non troppo strutturate.</p>
+            </div>
+          </article>
+
+          <!-- Vino 5 -->
+          <article class="wine">
+            <div class="wine-img"><img src="images/vini/bianco-spumante-extra-dry.jpg" alt="Bottiglia di vino bianco spumante Extra Dry"></div>
+            <div>
+              <div class="wine-top">
+                <div>
+                  <h3>Vino bianco spumante Extra Dry</h3>
+                  <p class="sub">Spumante · Metodo Charmat</p>
+                </div>
+                <span class="price-tag">20€</span>
+              </div>
+              <p class="desc">Uve raccolte in leggero anticipo per preservare freschezza e acidità. Prima fermentazione a bassa temperatura per mantenere aromi fruttati e floreali, poi presa di spuma in autoclave che dona perlage fine e persistente. L’Extra Dry offre equilibrio tra morbidezza e freschezza.</p>
+              <div class="facts">
+                <div><strong>Colore:</strong> giallo paglierino brillante con riflessi verdolini</div>
+                <div><strong>Profumi:</strong> fiori bianchi, mela verde, pera, agrumi delicati</div>
+                <div><strong>Gusto:</strong> fresco, vivace, bollicina fine e finale morbido</div>
+              </div>
+              <p class="pair"><strong>Abbinamenti:</strong> perfetto come aperitivo con Robiola d’Alba, Tumalin e salumi. Ideale anche con piatti leggeri di pesce e verdure.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prodotti -->
+    <section class="sec soft" id="prodotti">
+      <div class="wrap">
+        <div class="sec-h">
+          <h2>Prodotti tipici da abbinare</h2>
+          <p>Selezione di salumi e formaggi del territorio, pensati per esaltare i nostri vini.</p>
+        </div>
+        <div class="prods">
+          <article class="prod">
+            <img src="images/prodotti/salame-di-pavia.jpg" alt="Salame di Pavia su tagliere">
+            <div class="body">
+              <h3>Salame di Pavia</h3>
+              <p>Salume dal gusto pieno e deciso, ideale a fette spesse. Perfetto con i rossi più strutturati come il Barolo “Priore” e il Cisterna Superiore.</p>
+            </div>
+          </article>
+          <article class="prod">
             <img src="images/prodotti/tumalin.jpg" alt="Tumalin">
-            
-          </div>
-          <div class="product-content">
-            <h3>Tumalin</h3>
-            <p>
-              Prodotto tipico da gustare come antipasto o in accompagnamento ai vini rossi del territorio.
-              La sua sapidità e struttura si sposano bene con il Cisterna d’Asti DOC e il Tumlin di Tenuta Laramè.
-            </p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-image">
+            <div class="body">
+              <h3>Tumalin</h3>
+              <p>Da gustare come antipasto o con i rossi del territorio: sapidità e struttura si sposano con il Cisterna d’Asti DOC e il Tumlin di Tenuta Laramè.</p>
+            </div>
+          </article>
+          <article class="prod">
             <img src="images/prodotti/robiola-d-alba.jpg" alt="Robiola d’Alba">
-            
-          </div>
-          <div class="product-content">
-            <h3>Robiola d’Alba</h3>
-            <p>
-              Formaggio morbido e cremoso delle Langhe, dal sapore delicato ma persistente. Si abbina
-              splendidamente al Cisterna d’Asti DOC e al vino bianco spumante Extra Dry, creando un
-              equilibrio perfetto tra freschezza del vino e cremosità del formaggio.
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Sezione: Contatti e pagamenti -->
-    <section class="section call-to-action" id="ordina">
-      <h2>Ordina ora la tua esperienza “Sapori di Cisterna”</h2>
-      <p>
-        Scegli due prodotti dal catalogo, invia un messaggio WhatsApp e completa il pagamento
-        con il metodo che preferisci.
-      </p>
-
-      <div class="cta-box">
-        <div class="cta-item">
-          <h3>1. Scrivi su WhatsApp</h3>
-          <p>
-            Numero: <a href="https://wa.me/393713953195" target="_blank" rel="noopener noreferrer">
-              371 395 3195
-            </a>
-          </p>
-        </div>
-        <div class="cta-item">
-          <h3>2. Scegli il pagamento</h3>
-          <ul class="payments-list">
-            <li>Satispay</li>
-            <li>PayPal</li>
-            <li>Bonifico istantaneo</li>
-          </ul>
+            <div class="body">
+              <h3>Robiola d’Alba</h3>
+              <p>Formaggio morbido e cremoso delle Langhe, delicato ma persistente. Si abbina al Cisterna d’Asti DOC e allo spumante Extra Dry.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- Ordina -->
+    <section class="order" id="ordina">
+      <div class="wrap">
+        <h2>Ordina la tua esperienza “Sapori di Cisterna”</h2>
+        <p class="lead">Scegli i prodotti dal catalogo, invia un messaggio WhatsApp e completa il pagamento con il metodo che preferisci. Pensiamo noi alla consegna in appartamento.</p>
+        <div class="order-grid">
+          <div class="order-card">
+            <h3>1. Scrivi su WhatsApp</h3>
+            <p>Numero: <a class="js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">371 395 3195</a></p>
+          </div>
+          <div class="order-card">
+            <h3>2. Scegli il pagamento</h3>
+            <div class="pay"><span>Satispay</span><span>PayPal</span><span>Bonifico istantaneo</span></div>
+          </div>
+        </div>
+        <a class="wa js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">💬 Ordina ora su WhatsApp</a>
+      </div>
+    </section>
   </main>
 
+  <footer class="foot">
+    <div class="wrap">
+      <div>© <span id="year"></span> Taká appartamenti · Cisterna d’Asti</div>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html#appartamenti">Appartamenti</a>
+        <a href="index.html#servizi">Servizi</a>
+        <a href="index.html#contatti">Contatti</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+      document.querySelectorAll('.js-cta-whatsapp').forEach(link=>{
+        const phone=link.getAttribute('data-phone')||'393713953195';
+        const msg="Ciao Taká appartamenti, vorrei ordinare l'esperienza enogastronomica \"Sapori di Cisterna\".";
+        const url=new URL(`https://wa.me/${phone}`);
+        url.searchParams.set('text',msg);
+        link.href=url.toString();
+      });
+    });
+  </script>
 </body>
 </html>
