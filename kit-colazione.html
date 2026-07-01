@@ -3,108 +3,292 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Che cosa offre il nostro kit colazione? – Taká appartamenti</title>
-  <meta name="description" content="Scopri i kit colazione prenotabili al check-in: Omaggio, Goloso (+5€), Abbondante (+7€), Familiare (25€).">
+  <title>Il kit colazione Taká – Colazione km 0 a Cisterna d’Asti</title>
+  <meta name="description" content="Scopri i kit colazione prenotabili al check-in: Omaggio, Goloso (+5€), Abbondante (+7€), Familiare (25€). Prodotti km 0 de La Bottega di Sandra e Michela.">
   <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/kit-colazione.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Che cosa offre il nostro kit colazione? – Taká appartamenti">
+  <meta property="og:title" content="Il kit colazione Taká – Colazione km 0">
   <meta property="og:description" content="Quattro kit colazione: Omaggio, Goloso, Abbondante, Familiare. Scegli al check-in.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://cengio04.github.io/taka_appartamenti/kit-colazione.html">
-  <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/foto.jpg">
+  <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/colazione.jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="it_IT">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Che cosa offre il nostro kit colazione?">
+  <meta name="twitter:title" content="Il kit colazione Taká">
   <meta name="twitter:description" content="Omaggio, Goloso (+5€), Abbondante (+7€), Familiare (25€).">
-  <meta name="twitter:image" content="https://cengio04.github.io/taka_appartamenti/images/foto.jpg">
+  <meta name="twitter:image" content="https://cengio04.github.io/taka_appartamenti/images/colazione.jpeg">
 
+  <meta name="theme-color" content="#C2703D">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">☕</text></svg>'>
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1F1B17; --muted:#7c7268; --soft:#F5EFE7; --line:#EFE9E1;
+      --acc:#C2703D; --acc-d:#a85c2f; --gold:#B58A2E; --green:#1F8A4C;
+    }
+    .kc{ font-family:"Hanken Grotesk",system-ui,sans-serif; color:var(--ink); background:#fff; }
+    .kc *{ box-sizing:border-box; }
+    .kc h1,.kc h2,.kc h3,.kc .brand-name,.kc .num,.kc .price-tag{ font-family:"Space Grotesk",system-ui,sans-serif; letter-spacing:-.02em; }
+    .kc img{ max-width:100%; display:block; }
+    .wrap{ max-width:1120px; margin-inline:auto; padding-inline:24px; }
+    .kc a{ text-decoration:none; }
+
+    /* Header */
+    .kc-head{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line); }
+    .kc-head-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:68px; }
+    .brand{ display:flex; align-items:center; gap:11px; color:var(--ink); }
+    .brand img{ width:40px; height:40px; object-fit:contain; }
+    .brand-name{ font-size:19px; font-weight:700; }
+    .brand-name b{ color:var(--acc); }
+    .kc-head-nav{ display:flex; align-items:center; gap:22px; }
+    .kc-head-nav a{ color:#544b41; font-size:14.5px; font-weight:500; }
+    .kc-head-nav a:hover{ color:var(--acc); }
+    .kc-wa{ display:inline-flex; align-items:center; gap:8px; background:var(--acc); color:#fff; padding:11px 20px; border-radius:9px; font-size:14px; font-weight:600; }
+    .kc-wa:hover{ background:var(--acc-d); }
+
+    /* Hero */
+    .kc-hero{ padding-block:56px; }
+    .kc-hero .grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+    .eyebrow{ font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); font-weight:600; }
+    .kc-hero h1{ font-size:clamp(2.1rem,4.6vw,3.2rem); line-height:1.04; margin:16px 0 18px; }
+    .kc-hero p.lead{ font-size:clamp(1.02rem,1.4vw,1.18rem); line-height:1.6; color:#5b5248; margin:0 0 26px; max-width:46ch; }
+    .kc-hero .cta{ display:flex; flex-wrap:wrap; gap:12px; }
+    .btn-solid{ display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--acc); color:#fff; padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-solid:hover{ background:var(--acc-d); }
+    .btn-ghost{ display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1.5px solid var(--line); color:var(--ink); padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-ghost:hover{ border-color:var(--acc); color:var(--acc); }
+    .kc-hero-media{ position:relative; }
+    .kc-hero-media img{ width:100%; height:440px; object-fit:cover; border-radius:18px; box-shadow:0 30px 60px -34px rgba(31,27,23,.5); }
+    .kc-hero-badge{ position:absolute; left:18px; bottom:18px; display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.95); backdrop-filter:blur(6px); padding:10px 14px 10px 10px; border-radius:14px; box-shadow:0 12px 30px -14px rgba(0,0,0,.35); }
+    .kc-hero-badge img{ width:46px; height:46px; border-radius:10px; object-fit:cover; background:#F7F1E4; }
+    .kc-hero-badge .t1{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+    .kc-hero-badge .t2{ font-size:14px; font-weight:600; color:var(--ink); }
+
+    /* Come funziona */
+    .steps{ background:var(--ink); color:#f2e9df; }
+    .steps .wrap{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; padding-block:36px; }
+    .step{ display:flex; gap:14px; align-items:flex-start; }
+    .step .n{ flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:var(--acc); color:#fff; display:flex; align-items:center; justify-content:center; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:15px; }
+    .step h3{ margin:2px 0 4px; font-size:16px; color:#fff; }
+    .step p{ margin:0; font-size:14px; color:#cbbeb0; line-height:1.5; }
+
+    /* Kit cards */
+    .sec{ padding-block:64px; }
+    .sec-h{ text-align:center; max-width:620px; margin:0 auto 40px; }
+    .sec-h h2{ font-size:clamp(1.8rem,3.2vw,2.3rem); margin:0 0 12px; }
+    .sec-h p{ color:#5b5248; font-size:15.5px; line-height:1.6; margin:0; }
+    .kits{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+    .kit{ position:relative; border:1px solid var(--line); border-radius:18px; padding:28px; background:#fff; box-shadow:0 1px 0 rgba(0,0,0,.02); transition:box-shadow .2s ease, transform .2s ease; }
+    .kit:hover{ box-shadow:0 26px 50px -34px rgba(31,27,23,.4); transform:translateY(-2px); }
+    .kit.feat{ border-color:var(--acc); box-shadow:0 20px 44px -30px rgba(194,112,61,.55); }
+    .kit-top{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:14px; }
+    .kit-name{ display:flex; align-items:center; gap:12px; }
+    .num{ width:40px; height:40px; border-radius:12px; background:var(--soft); color:var(--acc); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; }
+    .kit h3{ margin:0; font-size:20px; }
+    .price-tag{ font-weight:700; font-size:15px; padding:7px 14px; border-radius:999px; white-space:nowrap; }
+    .price-tag.free{ color:var(--green); background:rgba(31,138,76,.12); }
+    .price-tag.paid{ color:var(--acc); background:rgba(194,112,61,.12); }
+    .price-tag.big{ color:#fff; background:var(--acc); }
+    .kit p{ margin:0; color:#5b5248; font-size:15px; line-height:1.6; }
+    .kit .plus{ margin-top:14px; display:flex; flex-wrap:wrap; gap:7px; }
+    .kit .plus span{ font-size:12.5px; color:#5b5248; background:var(--soft); border:1px solid var(--line); padding:5px 11px; border-radius:999px; }
+    .ribbon{ position:absolute; top:-11px; right:22px; background:var(--acc); color:#fff; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:12px; letter-spacing:.02em; padding:5px 13px; border-radius:999px; box-shadow:0 8px 18px -8px rgba(194,112,61,.7); }
+    .note{ text-align:center; color:var(--muted); font-size:13.5px; margin:30px auto 0; max-width:640px; line-height:1.6; }
+
+    /* Partner */
+    .partner{ background:var(--soft); }
+    .partner .wrap{ display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:center; padding-block:44px; }
+    .partner .logo{ width:120px; height:120px; border-radius:16px; object-fit:cover; background:#fff; border:1px solid var(--line); }
+    .partner h2{ margin:0 0 8px; font-size:clamp(1.4rem,2.6vw,1.8rem); }
+    .partner p{ margin:0; color:#5b5248; font-size:15.5px; line-height:1.6; max-width:60ch; }
+
+    /* CTA band */
+    .cta-band{ background:var(--acc); color:#fff; }
+    .cta-band .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:44px; flex-wrap:wrap; }
+    .cta-band h2{ margin:0; font-size:clamp(1.5rem,3vw,2rem); color:#fff; }
+    .cta-band p{ margin:6px 0 0; color:#fbe7db; font-size:15px; }
+    .cta-band a{ background:var(--ink); color:#fff; padding:15px 30px; border-radius:10px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; }
+
+    /* Footer */
+    .foot{ background:var(--ink); color:#a89a86; }
+    .foot .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:26px; flex-wrap:wrap; font-size:13.5px; }
+    .foot a{ color:#c7b9a6; } .foot a:hover{ color:#fff; }
+    .foot-nav{ display:flex; gap:18px; flex-wrap:wrap; }
+
+    .skip-link{ position:absolute; left:-999px; top:-999px; }
+    .skip-link:focus{ left:8px; top:8px; z-index:999; background:var(--acc); color:#fff; padding:.5rem .75rem; border-radius:8px; }
+
+    @media (max-width:900px){
+      .kc-head-nav .hide-sm{ display:none; }
+      .kc-hero .grid{ grid-template-columns:1fr; gap:30px; }
+      .kc-hero-media img{ height:340px; }
+      .steps .wrap{ grid-template-columns:1fr; gap:18px; padding-block:28px; }
+      .kits{ grid-template-columns:1fr; }
+      .partner .wrap{ grid-template-columns:1fr; text-align:left; }
+    }
+    @media (max-width:520px){
+      .wrap{ padding-inline:16px; }
+      .kc-hero{ padding-block:36px; }
+      .brand-name{ font-size:17px; }
+      .partner .logo{ width:96px; height:96px; }
+    }
+  </style>
 </head>
-<body>
+
+<body class="kc">
   <a class="skip-link" href="#main">Salta al contenuto</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="Homepage Taká appartamenti">Taká appartamenti</a>
-      <nav class="nav" aria-label="Principale">
+  <header class="kc-head">
+    <div class="wrap kc-head-in">
+      <a href="index.html" class="brand" aria-label="Homepage Taká appartamenti">
+        <img src="images/logof.png" alt="Logo Taká appartamenti" width="40" height="40">
+        <span class="brand-name">Taká<b>/</b>appartamenti</span>
+      </a>
+      <nav class="kc-head-nav" aria-label="Principale">
+        <a href="index.html#servizi" class="hide-sm">Servizi</a>
+        <a href="index.html#appartamenti" class="hide-sm">Appartamenti</a>
+        <a class="kc-wa js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">💬 Richiedi info</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Che cosa offre il nostro kit colazione?</h1>
-          <p class="lead">Tutti i Taká ti accolgono con un kit colazione km 0, offerto da "La Bottega di Sandra e Michela". Scegli se accontentarti o provare altri prodotti freschi e di qualità.</p>
+    <!-- Hero -->
+    <section class="kc-hero">
+      <div class="wrap grid">
+        <div>
+          <span class="eyebrow">Servizio · Colazione km 0</span>
+          <h1>Il kit colazione Taká</h1>
+          <p class="lead">Ogni appartamento ti accoglie con un kit colazione <strong>km 0</strong>, offerto da “La Bottega di Sandra e Michela”, l’unico forno del paese che sforna ogni giorno dolci locali. Scegli se accontentarti dell’omaggio o assaggiare prodotti freschi in più.</p>
           <div class="cta">
-            <a class="btn btn-primary js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">Richiedi info</a>
-            <a class="btn btn-outline" href="index.html#servizi">Torna ai servizi</a>
+            <a class="btn-solid js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">💬 Richiedi la colazione</a>
+            <a class="btn-ghost" href="index.html#servizi">← Torna ai servizi</a>
           </div>
         </div>
-        <div class="hero-media">
-          <img src="images/colazione1.JPG" alt="Esempio di kit colazione Taká appartamenti">
+        <div class="kc-hero-media">
+          <img src="images/colazione.jpeg" alt="Il kit colazione Taká: cestino con prodotti da forno accanto alla macchina del caffè" width="1000" height="440">
+          <div class="kc-hero-badge">
+            <img src="images/colazione1.JPG" alt="Logo La Bottega di Sandra e Michela">
+            <div>
+              <div class="t1">Prodotti da</div>
+              <div class="t2">La Bottega di Sandra e Michela</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Riquadro riassuntivo senape -->
-    <section class="section">
-      <div class="container">
-        <div class="kit-box">
-          <h2>I kit disponibili al check‑in</h2>
-          <p class="small muted">Scegli o conferma il tuo kit all’arrivo. Le aggiunte si intendono per persona salvo diverso accordo.</p>
-
-          <div class="kit-list">
-            <!-- Omaggio -->
-            <article class="kit-item">
-              <img src="images/colazione.jpeg" alt="Kit omaggio: selezione base per iniziare la giornata" loading="lazy">
-              <div class="kit-info">
-                <h3>1. Omaggio <span class="kit-price">Incluso</span></h3>
-                <p>Piccola selezione di base (esempio: cialde caffè, tè, biscotti artigianali de "La Bottega di Sandra e Michela", zucchero). Ideale per chi vuole un’accoglienza semplice e veloce.</p>
-              </div>
-            </article>
-            <!-- Goloso -->
-            <article class="kit-item">
-              <img src="images/colazione.jpeg" alt="Kit Goloso: prodotti dolci aggiuntivi" loading="lazy">
-              <div class="kit-info">
-                <h3>2. Goloso <span class="kit-price">+5€ / pers</span></h3>
-                <p>Aggiunta di dolci locali (Torcetti e paste di meliga de "La Bottega di Sandra e Michela", un croissant a scelta, confettura e succo. Perfetto per chi ama iniziare la giornata con varietà dolce.</p>
-              </div>
-            </article>
-            <!-- Abbondante -->
-            <article class="kit-item">
-              <img src="images/colazione.jpeg" alt="Kit Abbondante: varietà maggiore di prodotti colazione" loading="lazy">
-              <div class="kit-info">
-                <h3>3. Abbondante <span class="kit-price">+7€ / pers</span></h3>
-                <p>Include ciò del Goloso + aggiunta di yogurt o frutta di stagione (quando disponibile) e maggiore numero di porzioni.</p>
-              </div>
-            </article>
-            <!-- Familiare -->
-            <article class="kit-item">
-              <img src="images/colazione.jpeg" alt="Kit Familiare: formato adatto a gruppi o famiglie" loading="lazy">
-              <div class="kit-info">
-                <h3>4. Familiare <span class="kit-price">25€ tot</span></h3>
-                <p>Pensato per famiglie o piccoli gruppi: assortimento combinato (dolce + extra bevande) per più persone, in formato condiviso. In aggiunta la speciale crostata artigianale! </p>
-              </div>
-            </article>
-          </div>
-
-          <p class="small muted">Nota: la composizione può variare leggermente in base alla disponibilità locale e alla stagione. "La Bottega di Sandra e Michela" è l'unico forno del paese che sforna ogni giorno deliziosi dolci locali.</p>
+    <!-- Come funziona -->
+    <section class="steps" aria-label="Come funziona">
+      <div class="wrap">
+        <div class="step">
+          <div class="n">1</div>
+          <div><h3>Scegli al check-in</h3><p>Ci dici quale kit preferisci quando arrivi, senza pensieri in anticipo.</p></div>
         </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div><h3>Prepariamo km 0</h3><p>Prodotti freschi presi ogni mattina dal forno del paese.</p></div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div><h3>Colazione pronta</h3><p>Trovi tutto in appartamento, pronto da gustare quando vuoi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- I kit -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-h">
+          <h2>Scegli il tuo kit</h2>
+          <p>Confermi o scegli il kit al momento dell’arrivo. Le aggiunte si intendono per persona, salvo diverso accordo.</p>
+        </div>
+
+        <div class="kits">
+          <!-- Omaggio -->
+          <article class="kit">
+            <div class="kit-top">
+              <div class="kit-name"><span class="num">1</span><h3>Omaggio</h3></div>
+              <span class="price-tag free">Incluso</span>
+            </div>
+            <p>Piccola selezione di base — cialde caffè, tè, biscotti artigianali de “La Bottega di Sandra e Michela”, zucchero. Ideale per chi vuole un’accoglienza semplice e veloce.</p>
+            <div class="plus"><span>☕ Caffè &amp; tè</span><span>🍪 Biscotti artigianali</span></div>
+          </article>
+
+          <!-- Goloso -->
+          <article class="kit feat">
+            <span class="ribbon">Più richiesto</span>
+            <div class="kit-top">
+              <div class="kit-name"><span class="num">2</span><h3>Goloso</h3></div>
+              <span class="price-tag paid">+5€ / pers</span>
+            </div>
+            <p>Aggiunta di dolci locali — torcetti e paste di meliga de “La Bottega di Sandra e Michela”, un croissant a scelta, confettura e succo. Perfetto per chi ama la varietà dolce.</p>
+            <div class="plus"><span>🥐 Croissant a scelta</span><span>🍯 Confettura</span><span>🧃 Succo</span></div>
+          </article>
+
+          <!-- Abbondante -->
+          <article class="kit">
+            <div class="kit-top">
+              <div class="kit-name"><span class="num">3</span><h3>Abbondante</h3></div>
+              <span class="price-tag paid">+7€ / pers</span>
+            </div>
+            <p>Include tutto il Goloso, con l’aggiunta di yogurt o frutta di stagione (quando disponibile) e un maggior numero di porzioni.</p>
+            <div class="plus"><span>🥣 Yogurt</span><span>🍓 Frutta di stagione</span><span>➕ Più porzioni</span></div>
+          </article>
+
+          <!-- Familiare -->
+          <article class="kit">
+            <div class="kit-top">
+              <div class="kit-name"><span class="num">4</span><h3>Familiare</h3></div>
+              <span class="price-tag big">25€ totale</span>
+            </div>
+            <p>Pensato per famiglie o piccoli gruppi: assortimento combinato (dolce + extra bevande) in formato condiviso. In più, la speciale crostata artigianale!</p>
+            <div class="plus"><span>👨‍👩‍👧 Formato condiviso</span><span>🥧 Crostata artigianale</span></div>
+          </article>
+        </div>
+
+        <p class="note">La composizione può variare leggermente in base alla disponibilità locale e alla stagione. “La Bottega di Sandra e Michela” è l’unico forno del paese che sforna ogni giorno deliziosi dolci locali.</p>
+      </div>
+    </section>
+
+    <!-- Partner -->
+    <section class="partner">
+      <div class="wrap">
+        <img class="logo" src="images/colazione1.JPG" alt="Logo La Bottega di Sandra e Michela, dal 1978">
+        <div>
+          <span class="eyebrow">Il nostro forno di fiducia · dal 1978</span>
+          <h2>La Bottega di Sandra e Michela</h2>
+          <p>Torcetti, paste di meliga, crostate e pane fresco: ogni mattina i dolci del kit arrivano dall’unico forno di Cisterna d’Asti. Una colazione che sa davvero di Langhe e Roero.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="wrap">
+        <div>
+          <h2>Vuoi la colazione pronta al tuo arrivo?</h2>
+          <p>Scrivici il kit che preferisci: pensiamo a tutto noi.</p>
+        </div>
+        <a class="js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Taká appartamenti</div>
-      <nav class="footer-nav" aria-label="Footer">
+  <footer class="foot">
+    <div class="wrap">
+      <div>© <span id="year"></span> Taká appartamenti · Cisterna d’Asti</div>
+      <nav class="foot-nav" aria-label="Footer">
         <a href="index.html#appartamenti">Appartamenti</a>
         <a href="index.html#servizi">Servizi</a>
         <a href="index.html#contatti">Contatti</a>
@@ -117,7 +301,6 @@
     document.addEventListener('DOMContentLoaded',()=>{
       const y=document.getElementById('year');
       if(y) y.textContent=new Date().getFullYear();
-      // Attiva WhatsApp links con messaggio
       document.querySelectorAll('.js-cta-whatsapp').forEach(link=>{
         const phone=link.getAttribute('data-phone')||'393667273951';
         const msg="Ciao Taká appartamenti, vorrei informazioni sui kit colazione.";
