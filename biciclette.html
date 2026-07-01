@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Noleggio biciclette a Cisterna d’Asti – Taká appartamenti</title>
-  <meta name="description" content="Affitta biciclette a Cisterna d’Asti: tour tra Langhe e Roero, percorsi consigliati e attività all’aria aperta per ospiti dei Taká appartamenti.">
+  <meta name="description" content="Affitta biciclette a Cisterna d’Asti: tour guidati tra Langhe e Roero, percorsi consigliati e attività all’aria aperta per gli ospiti dei Taká appartamenti.">
   <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/biciclette.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Noleggio biciclette a Cisterna d’Asti – Taká appartamenti">
-  <meta property="og:description" content="Percorsi tra Langhe e Roero, attività e noleggio bici per gli ospiti. Scopri itinerari e foto.">
+  <meta property="og:description" content="Percorsi tra Langhe e Roero, tour guidati e noleggio bici per gli ospiti. Scopri itinerari e prezzi.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://cengio04.github.io/taka_appartamenti/biciclette.html">
-  <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/foto.jpg">
+  <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/sentiero.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="it_IT">
@@ -20,126 +20,306 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Noleggio biciclette a Cisterna d’Asti – Taká appartamenti">
-  <meta name="twitter:description" content="Itinerari, foto e informazioni per pedalare tra Langhe e Roero.">
-  <meta name="twitter:image" content="https://cengio04.github.io/taka_appartamenti/images/foto.jpg">
+  <meta name="twitter:description" content="Itinerari, tour guidati e informazioni per pedalare tra Langhe e Roero.">
+  <meta name="twitter:image" content="https://cengio04.github.io/taka_appartamenti/images/sentiero.jpg">
 
+  <meta name="theme-color" content="#C2703D">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚴</text></svg>'>
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1F1B17; --muted:#7c7268; --soft:#F5EFE7; --line:#EFE9E1;
+      --acc:#C2703D; --acc-d:#a85c2f; --green:#1F8A4C; --amber:#B58A2E;
+    }
+    .bk{ font-family:"Hanken Grotesk",system-ui,sans-serif; color:var(--ink); background:#fff; }
+    .bk *{ box-sizing:border-box; }
+    .bk h1,.bk h2,.bk h3,.bk .brand-name,.bk .price-tag,.bk .num{ font-family:"Space Grotesk",system-ui,sans-serif; letter-spacing:-.02em; }
+    .bk img{ max-width:100%; display:block; }
+    .wrap{ max-width:1120px; margin-inline:auto; padding-inline:24px; }
+    .bk a{ text-decoration:none; }
+    .eyebrow{ font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); font-weight:600; }
+
+    /* Header */
+    .bk-head{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line); }
+    .bk-head-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:68px; }
+    .brand{ display:flex; align-items:center; gap:11px; color:var(--ink); }
+    .brand img{ width:40px; height:40px; object-fit:contain; }
+    .brand-name{ font-size:19px; font-weight:700; }
+    .brand-name b{ color:var(--acc); }
+    .bk-nav{ display:flex; align-items:center; gap:22px; }
+    .bk-nav a{ color:#544b41; font-size:14.5px; font-weight:500; }
+    .bk-nav a:hover{ color:var(--acc); }
+    .bk-wa{ display:inline-flex; align-items:center; gap:8px; background:var(--acc); color:#fff; padding:11px 20px; border-radius:9px; font-size:14px; font-weight:600; }
+    .bk-wa:hover{ background:var(--acc-d); }
+
+    /* Hero */
+    .bk-hero{ padding-block:56px; }
+    .bk-hero .grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+    .bk-hero h1{ font-size:clamp(2.1rem,4.6vw,3.2rem); line-height:1.04; margin:16px 0 18px; }
+    .bk-hero p.lead{ font-size:clamp(1.02rem,1.4vw,1.18rem); line-height:1.6; color:#5b5248; margin:0 0 26px; max-width:46ch; }
+    .cta{ display:flex; flex-wrap:wrap; gap:12px; }
+    .btn-solid{ display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--acc); color:#fff; padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-solid:hover{ background:var(--acc-d); }
+    .btn-ghost{ display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1.5px solid var(--line); color:var(--ink); padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-ghost:hover{ border-color:var(--acc); color:var(--acc); }
+    .bk-hero-media img{ width:100%; height:440px; object-fit:cover; border-radius:18px; box-shadow:0 30px 60px -34px rgba(31,27,23,.5); }
+
+    /* Sections */
+    .sec{ padding-block:60px; }
+    .sec.soft{ background:var(--soft); }
+    .sec-h{ margin-bottom:28px; }
+    .sec-h h2{ font-size:clamp(1.7rem,3vw,2.15rem); margin:0 0 8px; }
+    .sec-h p{ color:#5b5248; font-size:15px; margin:0; }
+
+    /* Percorsi cards */
+    .routes{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .route{ border:1px solid var(--line); border-radius:16px; padding:24px; background:#fff; }
+    .route .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .tag{ font-size:12px; font-weight:600; padding:5px 11px; border-radius:999px; }
+    .tag.km{ color:var(--acc); background:rgba(194,112,61,.12); }
+    .tag.lv-facile{ color:var(--green); background:rgba(31,138,76,.12); }
+    .tag.lv-inter{ color:var(--amber); background:rgba(181,138,46,.14); }
+    .route h3{ margin:0 0 8px; font-size:19px; }
+    .route p{ margin:0; color:#5b5248; font-size:14.5px; line-height:1.55; }
+    .routes-note{ margin:22px 0 0; color:var(--muted); font-size:14px; }
+
+    /* Info pratiche */
+    .info{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .info .box{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px; }
+    .info .ic{ width:44px; height:44px; border-radius:12px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:14px; }
+    .info h3{ margin:0 0 8px; font-size:17px; }
+    .info p{ margin:0; color:#5b5248; font-size:14.5px; line-height:1.55; }
+
+    /* Scenic banner */
+    .banner{ position:relative; height:340px; }
+    .banner img{ width:100%; height:100%; object-fit:cover; }
+    .banner::after{ content:""; position:absolute; inset:0; background:linear-gradient(0deg,rgba(18,14,10,.55),rgba(18,14,10,.05)); }
+    .banner .cap{ position:absolute; left:0; right:0; bottom:0; z-index:2; }
+    .banner .cap .wrap{ padding-bottom:28px; }
+    .banner .cap h2{ color:#fff; font-size:clamp(1.5rem,3vw,2rem); margin:0; max-width:20ch; }
+
+    /* Andrea bio */
+    .bio2{ display:grid; grid-template-columns:280px 1fr; gap:32px; align-items:center; }
+    .bio2 img{ width:100%; height:320px; object-fit:cover; border-radius:18px; box-shadow:0 26px 50px -34px rgba(31,27,23,.45); }
+    .bio2 h2{ margin:14px 0 12px; font-size:clamp(1.5rem,2.8vw,1.9rem); }
+    .bio2 p{ margin:0 0 12px; color:#5b5248; font-size:15.5px; line-height:1.65; max-width:60ch; }
+    .bio2 .muted{ color:var(--muted); font-size:14px; }
+
+    /* Prezzi */
+    .prices{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+    .pcard{ border:1px solid var(--line); border-radius:18px; padding:28px; background:#fff; }
+    .pcard.hl{ border-color:var(--acc); background:linear-gradient(180deg,#fff, #fdf5ef); box-shadow:0 22px 46px -32px rgba(194,112,61,.5); }
+    .pcard .ph{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:18px; }
+    .pcard h3{ margin:0; font-size:19px; }
+    .pcard .who{ font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--acc); background:rgba(194,112,61,.12); padding:5px 11px; border-radius:999px; }
+    .plist{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+    .plist li{ display:flex; gap:14px; align-items:baseline; padding-bottom:14px; border-bottom:1px dashed var(--line); }
+    .plist li:last-child{ border-bottom:0; padding-bottom:0; }
+    .price-tag{ font-size:22px; font-weight:700; color:var(--ink); white-space:nowrap; }
+    .plist .desc{ font-size:14.5px; color:#5b5248; line-height:1.5; }
+    .exp-tag{ display:inline-block; margin-top:6px; font-family:"Space Grotesk",sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; color:#fff; background:var(--acc); padding:4px 10px; border-radius:999px; }
+    .prices-note{ grid-column:1 / -1; color:var(--muted); font-size:13.5px; margin:6px 0 0; text-align:center; }
+
+    /* CTA + footer */
+    .cta-band{ background:var(--acc); color:#fff; }
+    .cta-band .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:44px; flex-wrap:wrap; }
+    .cta-band h2{ margin:0; font-size:clamp(1.5rem,3vw,2rem); color:#fff; }
+    .cta-band p{ margin:6px 0 0; color:#fbe7db; font-size:15px; }
+    .cta-band a{ background:var(--ink); color:#fff; padding:15px 30px; border-radius:10px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; }
+    .foot{ background:var(--ink); color:#a89a86; }
+    .foot .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:26px; flex-wrap:wrap; font-size:13.5px; }
+    .foot a{ color:#c7b9a6; } .foot a:hover{ color:#fff; }
+    .foot-nav{ display:flex; gap:18px; flex-wrap:wrap; }
+
+    .skip-link{ position:absolute; left:-999px; top:-999px; }
+    .skip-link:focus{ left:8px; top:8px; z-index:999; background:var(--acc); color:#fff; padding:.5rem .75rem; border-radius:8px; }
+
+    @media (max-width:900px){
+      .bk-nav .hide-sm{ display:none; }
+      .bk-hero .grid{ grid-template-columns:1fr; gap:28px; }
+      .bk-hero-media img{ height:320px; }
+      .routes{ grid-template-columns:1fr; }
+      .info{ grid-template-columns:1fr; }
+      .bio2{ grid-template-columns:1fr; }
+      .bio2 img{ height:300px; }
+      .prices{ grid-template-columns:1fr; }
+    }
+    @media (max-width:520px){
+      .wrap{ padding-inline:16px; }
+      .bk-hero{ padding-block:36px; }
+      .brand-name{ font-size:17px; }
+      .banner{ height:260px; }
+    }
+  </style>
 </head>
-<body>
+
+<body class="bk">
   <a class="skip-link" href="#main">Salta al contenuto</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="Homepage Taká appartamenti">Taká appartamenti</a>
-      <nav class="nav" aria-label="Principale">
-        <ul class="nav-menu">
-          <li><a href="index.html#appartamenti">Appartamenti</a></li>
-          <li><a href="index.html#servizi">Servizi</a></li>
-          <li><a href="index.html#dove-siamo">Dove siamo</a></li>
-          <li><a href="index.html#contatti">Contatti</a></li>
-          <li><a class="btn btn-primary" href="https://wa.me/393667273951" target="_blank" rel="noopener">Prenota ora</a></li>
-        </ul>
+  <header class="bk-head">
+    <div class="wrap bk-head-in">
+      <a href="index.html" class="brand" aria-label="Homepage Taká appartamenti">
+        <img src="images/logof.png" alt="Logo Taká appartamenti" width="40" height="40">
+        <span class="brand-name">Taká<b>/</b>appartamenti</span>
+      </a>
+      <nav class="bk-nav" aria-label="Principale">
+        <a href="index.html#servizi" class="hide-sm">Servizi</a>
+        <a href="index.html#appartamenti" class="hide-sm">Appartamenti</a>
+        <a class="bk-wa js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">💬 Chiedi info</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Affitta biciclette e attività outdoor</h1>
-          <p class="lead">Pedala tra le colline di Langhe e Roero: ti suggeriamo percorsi, panorami e tappe golose a pochi minuti dai Taká appartamenti.</p>
+    <!-- Hero -->
+    <section class="bk-hero">
+      <div class="wrap grid">
+        <div>
+          <span class="eyebrow">Servizio · Attività outdoor</span>
+          <h1>Affitta biciclette e pedala tra Langhe e Roero</h1>
+          <p class="lead">Esplora le colline in sella: ti suggeriamo percorsi, panorami e tappe golose a pochi minuti dai Taká appartamenti. Con tour guidato e aperitivo a sorpresa per i nostri ospiti.</p>
           <div class="cta">
-            <a class="btn btn-primary" href="https://wa.me/393667273951" target="_blank" rel="noopener">Chiedi disponibilità bici</a>
-            <a class="btn btn-outline" href="index.html#servizi">Torna ai servizi</a>
+            <a class="btn-solid js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">💬 Chiedi disponibilità bici</a>
+            <a class="btn-ghost" href="index.html#servizi">← Torna ai servizi</a>
           </div>
         </div>
-        <div class="hero-media">
-          <img src="images/sentiero.jpg" alt="Percorso in bici tra le colline vicino a Cisterna d’Asti">
+        <div class="bk-hero-media">
+          <img src="images/sentiero.jpg" alt="Percorso tra i vigneti delle colline vicino a Cisterna d’Asti" width="1000" height="440">
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <h2>Percorsi consigliati</h2>
-        <ul class="features">
-          <li>Percorsi ad anello: vigneti, belvederi e rientro in paese (10–18 km, dislivello leggero).</li>
-          <li>Verso il Roero: strade bianche e crinali panoramici (25–35 km, livello intermedio).</li>
-          <li>Direzione Alba: tappe enogastronomiche e visita al centro storico (40+ km, intermedio).</li>
-        </ul>
-        <p class="small muted">Possiamo adattare i giri in base a tempo, allenamento e interessi (cantine, borghi, punti panoramici).</p>
+    <!-- Percorsi -->
+    <section class="sec soft">
+      <div class="wrap">
+        <div class="sec-h">
+          <h2>Percorsi consigliati</h2>
+          <p>Tre itinerari per ogni gamba: dai giri in paese ai crinali panoramici.</p>
+        </div>
+        <div class="routes">
+          <article class="route">
+            <div class="tags"><span class="tag km">10–18 km</span><span class="tag lv-facile">Facile</span></div>
+            <h3>Anello dei vigneti</h3>
+            <p>Vigneti, belvederi e rientro in paese con dislivello leggero. Perfetto per una prima uscita.</p>
+          </article>
+          <article class="route">
+            <div class="tags"><span class="tag km">25–35 km</span><span class="tag lv-inter">Intermedio</span></div>
+            <h3>Verso il Roero</h3>
+            <p>Strade bianche e crinali panoramici tra le colline del Roero, per chi vuole allungare.</p>
+          </article>
+          <article class="route">
+            <div class="tags"><span class="tag km">40+ km</span><span class="tag lv-inter">Intermedio</span></div>
+            <h3>Direzione Alba</h3>
+            <p>Tappe enogastronomiche e visita al centro storico di Alba. Una giornata tra gusto e cultura.</p>
+          </article>
+        </div>
+        <p class="routes-note">Possiamo adattare i giri in base a tempo, allenamento e interessi: cantine, borghi o punti panoramici.</p>
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container">
-        <h1>Info pratiche</h1>
-        <ul class="features">
-          <li>Tipologie: city bike/trekking; su richiesta e‑bike.</li>
-          <li>Dotazioni: caschetto, lucchetto, kit riparazione base.</li>
-          <li>Orari: ritiro/riconsegna concordati al check‑in.</li>
-        </ul>
+    <!-- Info pratiche -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-h"><h2>Info pratiche</h2></div>
+        <div class="info">
+          <div class="box">
+            <div class="ic">🚲</div>
+            <h3>Tipologie</h3>
+            <p>City bike e trekking; e‑bike su richiesta per affrontare le salite senza fatica.</p>
+          </div>
+          <div class="box">
+            <div class="ic">🧰</div>
+            <h3>Dotazioni</h3>
+            <p>Caschetto, lucchetto e kit di riparazione base inclusi con ogni bicicletta.</p>
+          </div>
+          <div class="box">
+            <div class="ic">🕐</div>
+            <h3>Orari</h3>
+            <p>Ritiro e riconsegna concordati con te al momento del check‑in.</p>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- Scenic banner -->
+    <section class="banner">
+      <img src="images/background-vigneti.jpg" alt="Le colline di Langhe e Roero viste dai vigneti">
+      <div class="cap"><div class="wrap"><h2>Le colline di Langhe e Roero, dalla sella.</h2></div></div>
     </section>
 
     <!-- Andrea Palma -->
-    <section class="section">
-      <div class="container">
-        <h1>Andrea Palma - accompagnatore turistico</h1>
-        <div class="bio">
-          <img class="bio-img" src="images/Andrea.jpg" alt="Andrea Palma, promoter del servizio biciclette">
-          <div class="bio-text">
-            <p><strong>Andrea Palma</strong> è il promoter del servizio biciclette di Taká appartamenti, specializzato e certificato in questo specifico settore. Appassionato di outdoor e di percorsi tra Langhe e Roero, accompagna gli ospiti nella scelta degli itinerari più adatti, con consigli su panorami, tappe e soste golose.</p>
-            <p class="small muted">Suggerimenti personalizzati su richiesta: famiglie, coppie, gruppi e livelli di allenamento diversi.</p>
-          </div>
+    <section class="sec soft">
+      <div class="wrap bio2">
+        <img src="images/Andrea.jpg" alt="Andrea Palma in tenuta da ciclista lungo un percorso di montagna">
+        <div>
+          <span class="eyebrow">La tua guida · accompagnatore turistico</span>
+          <h2>Andrea Palma</h2>
+          <p><strong>Andrea Palma</strong> è il referente del servizio biciclette di Taká appartamenti, specializzato e certificato in questo settore. Appassionato di outdoor e di percorsi tra Langhe e Roero, accompagna gli ospiti nella scelta degli itinerari più adatti, con consigli su panorami, tappe e soste golose.</p>
+          <p class="muted">Suggerimenti personalizzati su richiesta: famiglie, coppie, gruppi e livelli di allenamento diversi.</p>
         </div>
       </div>
     </section>
 
-    <!-- Prezzi in riquadro color senape -->
-    <section class="section">
-      <div class="container">
-        <h1>Prezzi</h1>
-        <div class="price-box">
-          <div class="price-grid">
-            <div class="price-col">
-              <h1>Clienti Taká appartamenti</h1>
-              <ul>
-                <li><strong>85€ a persona</strong> — affitto bicicletta + tour guidato + aperitivo a sorpresa<span class="tag">TAKA EXPERIENCE</span></li>
-              </ul>              
+    <!-- Prezzi -->
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-h">
+          <h2>Prezzi</h2>
+          <p>Tariffe a persona, tour guidato incluso.</p>
+        </div>
+        <div class="prices">
+          <div class="pcard hl">
+            <div class="ph">
+              <h3>Clienti Taká</h3>
             </div>
-            <div class="price-col">
-              <h1>Non clienti</h1>
-              <ul>
-                <li><strong>85€ a persona</strong> — affitto bicicletta + tour guidato</li>
-                <li><strong>100€ a persona</strong> — affitto bicicletta + tour guidato + aperitivo</li>
-              </ul>
-            </div>
+            <ul class="plist">
+              <li>
+                <span class="price-tag">85€</span>
+                <span class="desc">Affitto bicicletta + tour guidato + <strong>aperitivo a sorpresa</strong>.<br><span class="exp-tag">TAKA EXPERIENCE</span></span>
+              </li>
+            </ul>
           </div>
-          <p class="small muted">Prezzi indicativi soggetti a disponibilità e modelli. Per gruppi e richieste speciali scrivici su WhatsApp.</p>
+          <div class="pcard">
+            <div class="ph">
+              <h3>Non clienti</h3>
+            </div>
+            <ul class="plist">
+              <li>
+                <span class="price-tag">85€</span>
+                <span class="desc">Affitto bicicletta + tour guidato.</span>
+              </li>
+              <li>
+                <span class="price-tag">100€</span>
+                <span class="desc">Affitto bicicletta + tour guidato + aperitivo.</span>
+              </li>
+            </ul>
+          </div>
+          <p class="prices-note">Prezzi indicativi, soggetti a disponibilità e modelli. Per gruppi e richieste speciali scrivici su WhatsApp.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <h1>Galleria attività</h1>
-        <div class="gallery">
-          <img src="images/bici1.jpeg" alt="Partenza in bici dai Taká appartamenti">
-          <img src="images/bici2.jpeg" alt="Strada tra i vigneti nelle colline del Roero">
-          <img src="images/bici3.jpeg" alt="Sosta panoramica lungo il percorso">
-          <img src="images/bici4.jpeg" alt="Degustazione e pausa rinfrescante">
-          <img src="images/bici5.jpeg" alt="Rientro verso Cisterna d’Asti al tramonto">
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="wrap">
+        <div>
+          <h2>Pronto a salire in sella?</h2>
+          <p>Scrivici date e numero di persone: organizziamo il tuo tour.</p>
         </div>
+        <a class="js-cta-whatsapp" data-phone="393667273951" href="https://wa.me/393667273951" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Taká appartamenti</div>
-      <nav class="footer-nav" aria-label="Footer">
+  <footer class="foot">
+    <div class="wrap">
+      <div>© <span id="year"></span> Taká appartamenti · Cisterna d’Asti</div>
+      <nav class="foot-nav" aria-label="Footer">
         <a href="index.html#appartamenti">Appartamenti</a>
         <a href="index.html#servizi">Servizi</a>
         <a href="index.html#contatti">Contatti</a>
@@ -149,8 +329,15 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', ()=> {
+    document.addEventListener('DOMContentLoaded', ()=>{
       const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+      document.querySelectorAll('.js-cta-whatsapp').forEach(link=>{
+        const phone=link.getAttribute('data-phone')||'393667273951';
+        const msg="Ciao Taká appartamenti, vorrei informazioni sul noleggio biciclette e i tour.";
+        const url=new URL(`https://wa.me/${phone}`);
+        url.searchParams.set('text',msg);
+        link.href=url.toString();
+      });
     });
   </script>
 </body>
