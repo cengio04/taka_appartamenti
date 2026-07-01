@@ -3,65 +3,162 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Visita guidata al castello – Taká appartamenti</title>
-  <meta name="description" content="Organizza la visita guidata al castello di Cisterna d’Asti: orari, modalità e tariffe (7€ adulti, 5€ bambini).">
+  <title>Visita guidata al castello di Cisterna d’Asti – Taká appartamenti</title>
+  <meta name="description" content="Organizza la visita guidata al castello di Cisterna d’Asti: durata, lingue, orari e tariffe (7€ adulti, 5€ bambini). Prenota su WhatsApp.">
   <link rel="canonical" href="https://cengio04.github.io/taka_appartamenti/visita-castello.html">
+
+  <meta property="og:title" content="Visita guidata al castello di Cisterna d’Asti">
+  <meta property="og:description" content="Storia, architettura e curiosità del borgo tra Langhe e Roero. Tariffe 7€ adulti, 5€ bambini.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://cengio04.github.io/taka_appartamenti/visita-castello.html">
+  <meta property="og:image" content="https://cengio04.github.io/taka_appartamenti/images/castello.jpg">
+  <meta property="og:locale" content="it_IT">
+
+  <meta name="theme-color" content="#C2703D">
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🏰</text></svg>'>
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1F1B17; --muted:#7c7268; --soft:#F5EFE7; --line:#EFE9E1;
+      --acc:#C2703D; --acc-d:#a85c2f;
+    }
+    .ca{ font-family:"Hanken Grotesk",system-ui,sans-serif; color:var(--ink); background:#fff; }
+    .ca *{ box-sizing:border-box; }
+    .ca h1,.ca h2,.ca h3,.ca .brand-name,.ca .price-tag,.ca .num{ font-family:"Space Grotesk",system-ui,sans-serif; letter-spacing:-.02em; }
+    .ca img{ max-width:100%; display:block; }
+    .wrap{ max-width:1120px; margin-inline:auto; padding-inline:24px; }
+    .ca a{ text-decoration:none; }
+    .eyebrow{ font-size:12.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--acc); font-weight:600; }
+
+    .ca-head{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line); }
+    .ca-head-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:68px; }
+    .brand{ display:flex; align-items:center; gap:11px; color:var(--ink); }
+    .brand img{ width:40px; height:40px; object-fit:contain; }
+    .brand-name{ font-size:19px; font-weight:700; }
+    .brand-name b{ color:var(--acc); }
+    .ca-nav{ display:flex; align-items:center; gap:22px; }
+    .ca-nav a{ color:#544b41; font-size:14.5px; font-weight:500; }
+    .ca-nav a:hover{ color:var(--acc); }
+    .ca-wa{ display:inline-flex; align-items:center; gap:8px; background:var(--acc); color:#fff; padding:11px 20px; border-radius:9px; font-size:14px; font-weight:600; }
+    .ca-wa:hover{ background:var(--acc-d); }
+
+    /* Hero */
+    .ca-hero{ padding-block:56px; }
+    .ca-hero .grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+    .ca-hero-media img{ width:100%; height:480px; object-fit:cover; border-radius:20px; box-shadow:0 30px 60px -34px rgba(31,27,23,.5); }
+    .ca-hero h1{ font-size:clamp(2.1rem,4.4vw,3rem); line-height:1.05; margin:14px 0 16px; }
+    .ca-hero p.lead{ font-size:clamp(1.02rem,1.3vw,1.15rem); line-height:1.6; color:#5b5248; margin:0 0 22px; }
+    .facts{ list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:12px; }
+    .facts li{ display:flex; gap:12px; align-items:flex-start; font-size:15px; color:#4a4139; }
+    .facts .ic{ flex:0 0 auto; width:32px; height:32px; border-radius:9px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:16px; }
+    .facts b{ font-family:"Space Grotesk",sans-serif; font-weight:600; }
+
+    /* Tariffe */
+    .fares{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+    .fare{ border:1px solid var(--line); border-radius:14px; padding:16px 22px; background:#fff; min-width:150px; }
+    .fare .price-tag{ font-size:28px; font-weight:700; }
+    .fare span{ display:block; font-size:13px; color:var(--muted); margin-top:2px; }
+    .cta{ display:flex; flex-wrap:wrap; gap:12px; }
+    .btn-solid{ display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--acc); color:#fff; padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-solid:hover{ background:var(--acc-d); }
+    .btn-ghost{ display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1.5px solid var(--line); color:var(--ink); padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
+    .btn-ghost:hover{ border-color:var(--acc); color:var(--acc); }
+    .booknote{ font-size:13.5px; color:var(--muted); margin:16px 0 0; }
+
+    /* CTA band */
+    .cta-band{ background:var(--acc); color:#fff; }
+    .cta-band .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:44px; flex-wrap:wrap; }
+    .cta-band h2{ margin:0; font-size:clamp(1.5rem,3vw,2rem); color:#fff; }
+    .cta-band p{ margin:6px 0 0; color:#fbe7db; font-size:15px; }
+    .cta-band a{ background:var(--ink); color:#fff; padding:15px 30px; border-radius:10px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; }
+
+    .foot{ background:var(--ink); color:#a89a86; }
+    .foot .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:26px; flex-wrap:wrap; font-size:13.5px; }
+    .foot a{ color:#c7b9a6; } .foot a:hover{ color:#fff; }
+    .foot-nav{ display:flex; gap:18px; flex-wrap:wrap; }
+
+    .skip-link{ position:absolute; left:-999px; top:-999px; }
+    .skip-link:focus{ left:8px; top:8px; z-index:999; background:var(--acc); color:#fff; padding:.5rem .75rem; border-radius:8px; }
+
+    @media (max-width:900px){
+      .ca-nav .hide-sm{ display:none; }
+      .ca-hero .grid{ grid-template-columns:1fr; gap:28px; }
+      .ca-hero-media img{ height:340px; }
+    }
+    @media (max-width:520px){
+      .wrap{ padding-inline:16px; }
+      .ca-hero{ padding-block:36px; }
+      .brand-name{ font-size:17px; }
+      .fare{ flex:1; min-width:0; }
+    }
+  </style>
 </head>
-<body class="page-castello">
+
+<body class="ca">
   <a class="skip-link" href="#main">Salta al contenuto</a>
 
-  <!-- Header minimale (riusa quello nuovo) -->
-  <header class="site-header header-min">
-    <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="Homepage Taká appartamenti">Taká appartamenti</a>
+  <header class="ca-head">
+    <div class="wrap ca-head-in">
+      <a href="index.html" class="brand" aria-label="Homepage Taká appartamenti">
+        <img src="images/logof.png" alt="Logo Taká appartamenti" width="40" height="40">
+        <span class="brand-name">Taká<b>/</b>appartamenti</span>
+      </a>
+      <nav class="ca-nav" aria-label="Principale">
+        <a href="index.html#servizi" class="hide-sm">Servizi</a>
+        <a href="index.html#appartamenti" class="hide-sm">Appartamenti</a>
+        <a class="ca-wa js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">💬 Prenota</a>
+      </nav>
     </div>
-    <nav id="mobileMenu" class="mobile-menu" aria-label="Menu mobile">
-    </nav>
   </header>
 
   <main id="main">
-    <section class="section castello-hero">
-      <div class="container castello-grid">
-        <figure class="castello-media">
-          <!-- Sostituisci con la tua foto (es: images/castello.jpg) -->
-            <img src="images/castello.jpg" alt="Veduta del castello di Cisterna d’Asti per le visite guidate" loading="eager">
+    <section class="ca-hero">
+      <div class="wrap grid">
+        <figure class="ca-hero-media" style="margin:0;">
+          <img src="images/castello.jpg" alt="Veduta del castello di Cisterna d’Asti per le visite guidate" loading="eager">
         </figure>
-
-        <div class="castello-box">
-          <h1 class="castello-title">Visita guidata al castello</h1>
-          <p>
-            Offriamo la possibilità di una visita guidata al castello di Cisterna d’Asti, ideale per scoprire storia locale,
-            architettura e curiosità del borgo tra Langhe e Roero.
-          </p>
-          <ul class="castello-punti">
-            <li>Durata media: 60 minuti</li>
-            <li>Contenuti: storia, tradizioni, ambienti principali</li>
-            <li>Lingua: italiano, inglese, francese, spagnolo e tedesco (su richiesta)</li>
+        <div>
+          <span class="eyebrow">Servizio · Esperienza culturale</span>
+          <h1>Visita guidata al castello</h1>
+          <p class="lead">Scopri il castello di Cisterna d’Asti con una visita guidata: storia locale, architettura e curiosità del borgo, nel cuore delle colline tra Langhe e Roero.</p>
+          <ul class="facts">
+            <li><span class="ic">🕐</span><div><b>Durata:</b> circa 60 minuti</div></li>
+            <li><span class="ic">🏛️</span><div><b>Contenuti:</b> storia, tradizioni e ambienti principali</div></li>
+            <li><span class="ic">🗣️</span><div><b>Lingue:</b> italiano, inglese, francese, spagnolo e tedesco (su richiesta)</div></li>
           </ul>
-          <div class="tariffe">
-            <h2>Tariffe</h2>
-            <p><strong>7€</strong> a persona (adulti)</p>
-            <p><strong>5€</strong> per bambini (fino a 12 anni)</p>
+          <div class="fares">
+            <div class="fare"><div class="price-tag">7€</div><span>a persona · adulti</span></div>
+            <div class="fare"><div class="price-tag">5€</div><span>bambini fino a 12 anni</span></div>
           </div>
-          <p class="prenota">
-            Prenotazione semplice: scrivici su WhatsApp indicando numero persone e giorno.
-          </p>
-          <div class="castello-cta">
-            <a class="btn btn-primary btn-sm" href="https://wa.me/3713953195?text=Ciao%2C+vorrei+prenotare+la+visita+guidata+al+castello+di+Cisterna+d%E2%80%99Asti" target="_blank" rel="noopener">
-              Prenota su WhatsApp
-            </a>
-            <a class="btn btn-secondary btn-sm" href="index.html#contatti">Altri contatti</a>
+          <div class="cta">
+            <a class="btn-solid js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">💬 Prenota su WhatsApp</a>
+            <a class="btn-ghost" href="index.html#contatti">Altri contatti</a>
           </div>
+          <p class="booknote">Prenotazione semplice: scrivici su WhatsApp indicando numero di persone e giorno.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="wrap">
+        <div>
+          <h2>Un tuffo nella storia del borgo</h2>
+          <p>Scegli il giorno e il numero di persone: pensiamo noi alla guida.</p>
+        </div>
+        <a class="js-cta-whatsapp" data-phone="393713953195" href="https://wa.me/393713953195" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Taká appartamenti</div>
-      <nav class="footer-nav" aria-label="Footer">
+  <footer class="foot">
+    <div class="wrap">
+      <div>© <span id="year"></span> Taká appartamenti · Cisterna d’Asti</div>
+      <nav class="foot-nav" aria-label="Footer">
         <a href="index.html#appartamenti">Appartamenti</a>
         <a href="index.html#servizi">Servizi</a>
         <a href="index.html#contatti">Contatti</a>
@@ -70,23 +167,17 @@
     </div>
   </footer>
 
-  <!-- Riusa lo script hamburger se non già caricato globalmente -->
   <script>
-    (function(){
-      const btn = document.getElementById('hamburger');
-      const menu = document.getElementById('mobileMenu');
-      if(!btn || !menu) return;
-      function open(){ btn.setAttribute('aria-expanded','true'); menu.classList.add('open'); document.body.style.overflow='hidden'; }
-      function close(){ btn.setAttribute('aria-expanded','false'); menu.classList.remove('open'); document.body.style.overflow=''; }
-      btn.addEventListener('click', ()=> btn.getAttribute('aria-expanded')==='true'? close(): open());
-      document.addEventListener('click', e=>{
-        if(!menu.classList.contains('open')) return;
-        const inside = e.target.closest('#mobileMenu') || e.target.closest('#hamburger');
-        if(!inside) close();
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+      document.querySelectorAll('.js-cta-whatsapp').forEach(link=>{
+        const phone=link.getAttribute('data-phone')||'393713953195';
+        const msg="Ciao Taká appartamenti, vorrei prenotare la visita guidata al castello di Cisterna d’Asti.";
+        const url=new URL(`https://wa.me/${phone}`);
+        url.searchParams.set('text',msg);
+        link.href=url.toString();
       });
-      document.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
-      const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
-    })();
+    });
   </script>
 </body>
 </html>
