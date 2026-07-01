@@ -68,9 +68,9 @@
     .btn-ghost{ display:inline-flex; align-items:center; justify-content:center; gap:8px; border:1.5px solid var(--line); color:var(--ink); padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; min-height:48px; }
     .btn-ghost:hover{ border-color:var(--acc); color:var(--acc); }
     .kc-hero-media{ position:relative; }
-    .kc-hero-media img{ width:100%; height:440px; object-fit:cover; border-radius:18px; box-shadow:0 30px 60px -34px rgba(31,27,23,.5); }
-    .kc-hero-badge{ position:absolute; left:18px; bottom:18px; display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.95); backdrop-filter:blur(6px); padding:10px 14px 10px 10px; border-radius:14px; box-shadow:0 12px 30px -14px rgba(0,0,0,.35); }
-    .kc-hero-badge img{ width:46px; height:46px; border-radius:10px; object-fit:cover; background:#F7F1E4; }
+    .kc-hero-media > img{ width:100%; height:440px; object-fit:cover; border-radius:18px; box-shadow:0 30px 60px -34px rgba(31,27,23,.5); }
+    .kc-hero-badge{ position:absolute; left:18px; bottom:18px; max-width:calc(100% - 36px); display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.95); backdrop-filter:blur(6px); padding:10px 14px 10px 10px; border-radius:14px; box-shadow:0 12px 30px -14px rgba(0,0,0,.35); }
+    .kc-hero-badge img{ width:46px; height:46px; flex:0 0 46px; border-radius:10px; object-fit:contain; background:#F7F1E4; }
     .kc-hero-badge .t1{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; }
     .kc-hero-badge .t2{ font-size:14px; font-weight:600; color:var(--ink); }
 
@@ -131,7 +131,7 @@
     @media (max-width:900px){
       .kc-head-nav .hide-sm{ display:none; }
       .kc-hero .grid{ grid-template-columns:1fr; gap:30px; }
-      .kc-hero-media img{ height:340px; }
+      .kc-hero-media > img{ height:340px; }
       .steps .wrap{ grid-template-columns:1fr; gap:18px; padding-block:28px; }
       .kits{ grid-template-columns:1fr; }
       .partner .wrap{ grid-template-columns:1fr; text-align:left; }
