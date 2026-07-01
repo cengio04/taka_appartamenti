@@ -1132,6 +1132,42 @@ p{ margin:.5rem 0; }
   margin-bottom: 0;
 }
 
+/* ============================================================
+   MIGLIORAMENTI — logo a destra del titolo + polish responsive
+   ============================================================ */
+
+/* Titolo a sinistra, logo a destra, allineati e bilanciati */
+.hero-title--clean{
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+.hero-title--clean h1{
+  flex: 1 1 auto;
+  min-width: 0;
+  text-wrap: balance;
+}
+.hero-title--clean .hero-logo{
+  flex: 0 0 auto;
+  order: 2; /* garantisce il logo a destra anche se cambia l'ordine nel markup */
+}
+/* Su mobile: logo un po' più piccolo ma sempre a destra */
+@media (max-width: 640px){
+  .hero-title--clean{ gap: .9rem; }
+  .hero-title--clean .hero-logo{ width: 96px; height: 96px; }
+}
+@media (max-width: 400px){
+  .hero-title--clean{ gap: .7rem; }
+  .hero-title--clean .hero-logo{ width: 78px; height: 78px; }
+}
+
+/* Tap target comodi (≥44px) su mobile per un tocco professionale */
+.btn{ min-height: 44px; }
+@media (max-width: 880px){ .btn{ height: 44px; } }
+.nav-drop-toggle{ min-height: 44px; }
+
+/* Le ancore non finiscono sotto l'header sticky quando si salta a una sezione */
+main section[id]{ scroll-margin-top: 84px; }
+
 /* Accessibilità helper */
 .visually-hidden {
   position:absolute;
